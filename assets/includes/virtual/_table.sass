@@ -1,0 +1,64 @@
+%table-item
+  border-radius: 5px
+  border: 1px solid $light-grey
+  background-color: #fff
+  width: 48%
+  
+  &:not(:last-child)
+    margin-bottom: 15px
+
+%table-header
+  background-color: #f9f9f9
+  padding: 10px 20px
+  display: flex
+  justify-content: space-between
+
+%table-header-title
+  color: $text-color
+  font-size: 15px
+  font-weight: 500
+
+%table-header-edit
+  display: flex
+  align-items: center
+  font-size: 12px
+  
+  svg
+    width: 17px
+    height: 17px
+    margin-right: 8px
+
+%table-body
+  display: flex
+  flex-direction: column
+
+%table-body-item
+  display: flex
+  align-items: center
+  width: 100%
+  font-size: 16px
+  line-height: 2
+  color: $text-color
+  padding: 10px 20px 10px
+
+  &:not(:first-child)
+    border-top: 1px solid $light-grey
+
+%table-body-item-title
+  width: 280px
+  display: flex
+  align-items: center
+
+%table-body-item-title-icon
+  width: 20px
+  height: 20px
+  margin-right: 12px
+
+  svg
+    max-width: 100%
+    max-height: 100%
+
+%table-body-item-button
+  margin-left: auto
+  background-color: #fafafa
+  border: none

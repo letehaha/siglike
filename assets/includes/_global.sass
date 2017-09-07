@@ -1,0 +1,39 @@
+main
+  height: 100%
+
+.font
+  font-family: $Roboto
+
+.scrollable
+  overflow-y: auto
+
+svg *
+  fill: currentColor
+
+#page-wrapper
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background-color: rgba(0, 0, 0, .8)
+  opacity: 0
+  visibility: hidden
+  z-index: -1
+  transition: opacity .25s ease-out, visibility .25s ease-out, z-index .25s ease-out
+
+  &.is-visible
+    z-index: $z-page-wrapper
+    visibility: visible
+    opacity: 1
+
+.page
+  height: 100vh
+  overflow: hidden
+
+.page--with-sidebar
+  display: flex
+
+.page-content
+  width: calc(100vw - #{$sidebar-width})
+  background-color: #f9f9f9

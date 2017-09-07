@@ -1,0 +1,20 @@
+%popup
+  position: absolute
+  top: 50%
+  left: 50%
+  padding: 30px 100px
+  background-color: #fff
+  border-radius: 35px
+  min-width: 400px
+  min-height: 500px
+  top: -100vh
+  opacity: 0
+  visibility: hidden
+  transition: opacity .25s ease-out, visibility .25s ease-out
+  z-index: $z-popup
+
+  &.is-visible
+    top: 50%
+    transform: translateX(-50%) translateY(-50%)
+    opacity: 1
+    visibility: visible

@@ -1,0 +1,12 @@
+=svg-style($color, $hover, $item, $type)
+  .svg-style-#{$type}
+    #{$type}: $color
+
+    #{$item}:hover &
+      #{$type}: $hover
+
+// $color: main color
+// $hover: color when hover
+// $item: when hover of the element occurs
+// $type: fill or stroke
+// example: +svg-style(#4b4b4b, $light-green, '.sidebar__nav-link', fill)

@@ -1,0 +1,166 @@
+<template lang="pug">
+  
+  aside.sidebar.sidebar--left
+    .sidebar__user
+      .sidebar__user-photo
+        img(src='images/users/user-doctor.jpg', alt='Doctor')
+
+      .sidebar__user-name
+        | Dr. John Wisley
+
+      .sidebar__user-bio
+        | Physician
+
+    nav.sidebar__nav
+      a.sidebar__link.sidebar__nav-link.sidebar__nav-link--reports(href='#')
+        .sidebar__nav-link-icon
+          //- +svg('reports')
+        
+        | Reports
+
+      a.sidebar__link.sidebar__nav-link(href='#')
+        .sidebar__nav-link-icon
+          //- +svg('patients')
+
+        | Patients
+
+      a.sidebar__link.sidebar__nav-link(href='#')
+        .sidebar__nav-link-icon
+          //- +svg('health_providers')
+
+        | Health Providers
+
+      a.sidebar__link.sidebar__nav-link(href='#')
+        .sidebar__nav-link-icon
+          //- +svg('my_profile')
+
+        | My Profile
+
+      a.sidebar__link.sidebar__nav-link(href='#')
+        .sidebar__nav-link-icon
+          //- +svg('notifications')
+
+        | Notifications
+
+      a.sidebar__link.sidebar__nav-link(href='#')
+        .sidebar__nav-link-icon
+          //- +svg('staff')
+
+        | Staff
+
+      a.sidebar__link.sidebar__nav-link(href='#')
+        .sidebar__nav-link-icon
+          //- +svg('deleted_files')
+
+        | Deleted Files
+
+      a.sidebar__link.sidebar__nav-link(href='#')
+        .sidebar__nav-link-icon
+          //- +svg('features')
+
+        | Request Feature
+
+      a.sidebar__link.sidebar__nav-link(href='#')
+        .sidebar__nav-link-icon
+          //- +svg('about')
+        
+        | About
+
+    .sidebar__sign-out
+      a.sidebar__link(href='#')
+        .sidebar__sign-out-link-icon
+          //- +svg('sign_out')
+        
+        | Sign Out
+
+</template>
+
+<script>
+  export default {
+    methods: {
+      sayHello: function () {
+        console.log('hello');
+      }
+    }
+  }
+</script>
+
+<style lang="sass">
+
+  .sidebar
+    width: $sidebar-width
+    border-right: 1px solid $light-grey
+    min-height: 100vh
+    display: flex
+    flex-direction: column
+
+  .sidebar__user
+    padding: 15px 25px 10px 25px
+    border-bottom: 1px solid $light-grey
+
+  .sidebar__user-photo
+    width: 65px
+    height: 65px
+    border-radius: 50%
+    overflow: hidden
+    margin-bottom: 15px
+
+    img
+      width: 100%
+      height: 100%
+      display: block
+
+  .sidebar__user-name
+    font-size: 20px
+    font-weight: 400
+    color: #000
+    margin-bottom: 5px
+
+  .sidebar__user-bio
+    font-size: 16px
+    color: #cecece
+    +font-smoothing
+
+  .sidebar__nav
+    display: flex
+    flex-direction: column
+
+  .sidebar__link
+    width: 100%
+    display: flex
+    align-items: center
+    padding: 15px 14px
+    font-size: 16px
+    color: $text-color
+
+  .sidebar__nav-link
+    border-left: 5px solid transparent
+    
+    &:hover
+      color: $light-green
+      border-left-color: $light-green
+      background-color: #f9f9f9
+
+  .sidebar__nav-link-icon
+    width: 20px
+    height: 20px
+    margin-right: 15px
+
+    svg
+      max-width: 100%
+      max-height: 100%
+
+  .sidebar__sign-out
+    margin-top: auto
+    border-top: 1px solid $light-grey
+
+  .sidebar__sign-out-link-icon
+    width: 20px
+    height: 20px
+    margin-right: 15px
+
+    svg
+      max-width: 100%
+      max-height: 100%
+
+</style>
