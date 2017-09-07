@@ -1,6 +1,6 @@
 # siglike-nuxt
 
-> Nuxt.js project
+> siglike Nuxt.js project
 
 ## Build Setup
 
@@ -17,6 +17,3 @@ $ npm start
 
 # generate static project
 $ npm run generate
-```
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
