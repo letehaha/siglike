@@ -1,4 +1,5 @@
 const resolve = require('path').resolve
+const fs = require('fs')
 
 const isVueRule = (rule) => {
   return rule.test.toString() === '/\\.vue$/'
@@ -53,5 +54,12 @@ module.exports = {
         }
       })
     }
+  },
+  router: {
+    linkActiveClass: 'global-active-link',
+    linkExactActiveClass: 'global-active-link'
+  },
+  node: {
+    fs: 'empty'
   }
 }

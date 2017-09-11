@@ -12,55 +12,47 @@
         | Physician
 
     nav.sidebar__nav
-      a.sidebar__link.sidebar__nav-link.sidebar__nav-link--reports(href='#')
+      nuxt-link.sidebar__link.sidebar__nav-link(to='/reports')
         .sidebar__nav-link-icon
-          //- +svg('reports')
+          loadIcon(reports)
         
         | Reports
-
-      a.sidebar__link.sidebar__nav-link(href='#')
+      nuxt-link.sidebar__link.sidebar__nav-link(to='/patients')
         .sidebar__nav-link-icon
           //- +svg('patients')
 
         | Patients
-
-      a.sidebar__link.sidebar__nav-link(href='#')
+      nuxt-link.sidebar__link.sidebar__nav-link(to='/providers')
         .sidebar__nav-link-icon
           //- +svg('health_providers')
 
         | Health Providers
-
-      a.sidebar__link.sidebar__nav-link(href='#')
+      nuxt-link.sidebar__link.sidebar__nav-link(to='/profile')
         .sidebar__nav-link-icon
           //- +svg('my_profile')
 
         | My Profile
-
-      a.sidebar__link.sidebar__nav-link(href='#')
+      nuxt-link.sidebar__link.sidebar__nav-link(to='/notifications')
         .sidebar__nav-link-icon
           //- +svg('notifications')
 
         | Notifications
-
-      a.sidebar__link.sidebar__nav-link(href='#')
+      nuxt-link.sidebar__link.sidebar__nav-link(to='/staff')
         .sidebar__nav-link-icon
           //- +svg('staff')
 
         | Staff
-
-      a.sidebar__link.sidebar__nav-link(href='#')
+      nuxt-link.sidebar__link.sidebar__nav-link(to='/trash')
         .sidebar__nav-link-icon
           //- +svg('deleted_files')
 
         | Deleted Files
-
-      a.sidebar__link.sidebar__nav-link(href='#')
+      nuxt-link.sidebar__link.sidebar__nav-link(to='/request-feature')
         .sidebar__nav-link-icon
           //- +svg('features')
 
         | Request Feature
-
-      a.sidebar__link.sidebar__nav-link(href='#')
+      nuxt-link.sidebar__link.sidebar__nav-link(to='/about')
         .sidebar__nav-link-icon
           //- +svg('about')
         
@@ -76,6 +68,13 @@
 </template>
 
 <script>
+
+  import fs from 'fs'
+
+  function loadIcon(path){
+    fs.readFileSync('~/assets/images/icons/' + path + '.svg', 'utf-8');
+  }
+
   export default {
     methods: {
       sayHello: function () {
@@ -136,6 +135,7 @@
   .sidebar__nav-link
     border-left: 5px solid transparent
     
+    &.global-active-link,
     &:hover
       color: $light-green
       border-left-color: $light-green
