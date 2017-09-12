@@ -1,5 +1,4 @@
 const resolve = require('path').resolve
-const fs = require('fs')
 
 const isVueRule = (rule) => {
   return rule.test.toString() === '/\\.vue$/'
@@ -38,12 +37,7 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
-      }
-    }
-  },
-  css: ['~assets/main.sass'],
-  build: {
-    extend (config) {
+      };
       config.module.rules.forEach((rule) => {
         if (isVueRule(rule)) {
           rule.options.loaders.sass.push(sassResourcesLoader)
@@ -55,11 +49,9 @@ module.exports = {
       })
     }
   },
+  css: ['~assets/main.sass'],
   router: {
     linkActiveClass: 'global-active-link',
     linkExactActiveClass: 'global-active-link'
-  },
-  node: {
-    fs: 'empty'
   }
 }

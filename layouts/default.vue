@@ -15,16 +15,12 @@
 
 </template>
 <script>
-
-  import Vue from 'vue'
-  import VueRouter from 'vue-router'
   import Sidebar from '~/components/Sidebar.vue'
   import AppHeader from '~/components/AppHeader.vue'
 
   export default {
     components: { Sidebar, AppHeader }
   }
-
 </script>
 
 
