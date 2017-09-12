@@ -68,19 +68,8 @@
 </template>
 
 <script>
-
-  import fs from 'fs'
-
-  function loadIcon(path){
-    fs.readFileSync('~/assets/images/icons/' + path + '.svg', 'utf-8');
-  }
-
   export default {
-    methods: {
-      sayHello: function () {
-        console.log('hello');
-      }
-    }
+
   }
 </script>
 
