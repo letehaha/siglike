@@ -1,4 +1,4 @@
-# siglike-nuxt
+# siglike
 
 > siglike Nuxt.js project
 
