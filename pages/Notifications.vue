@@ -7,7 +7,7 @@
 
 <script>
   export default {
-
+    name: 'notifications-page'
   }
 </script>
 

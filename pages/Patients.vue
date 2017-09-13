@@ -7,7 +7,7 @@
 
 <script>
   export default {
-
+    name: 'patients-page'
   }
 </script>
 

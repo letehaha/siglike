@@ -12,64 +12,39 @@
         | Physician
 
     nav.sidebar__nav
-      nuxt-link.sidebar__link.sidebar__nav-link(to='/reports')
+      nuxt-link.sidebar__link.sidebar__nav-link(v-for='link in links', :to='link.href')
         .sidebar__nav-link-icon
-          loadIcon(reports)
-        
-        | Reports
-      nuxt-link.sidebar__link.sidebar__nav-link(to='/patients')
-        .sidebar__nav-link-icon
-          //- +svg('patients')
 
-        | Patients
-      nuxt-link.sidebar__link.sidebar__nav-link(to='/providers')
-        .sidebar__nav-link-icon
-          //- +svg('health_providers')
-
-        | Health Providers
-      nuxt-link.sidebar__link.sidebar__nav-link(to='/profile')
-        .sidebar__nav-link-icon
-          //- +svg('my_profile')
-
-        | My Profile
-      nuxt-link.sidebar__link.sidebar__nav-link(to='/notifications')
-        .sidebar__nav-link-icon
-          //- +svg('notifications')
-
-        | Notifications
-      nuxt-link.sidebar__link.sidebar__nav-link(to='/staff')
-        .sidebar__nav-link-icon
-          //- +svg('staff')
-
-        | Staff
-      nuxt-link.sidebar__link.sidebar__nav-link(to='/trash')
-        .sidebar__nav-link-icon
-          //- +svg('deleted_files')
-
-        | Deleted Files
-      nuxt-link.sidebar__link.sidebar__nav-link(to='/request-feature')
-        .sidebar__nav-link-icon
-          //- +svg('features')
-
-        | Request Feature
-      nuxt-link.sidebar__link.sidebar__nav-link(to='/about')
-        .sidebar__nav-link-icon
-          //- +svg('about')
-        
-        | About
+        | {{ link.name }}
 
     .sidebar__sign-out
       a.sidebar__link(href='#')
         .sidebar__sign-out-link-icon
-          //- +svg('sign_out')
         
         | Sign Out
 
 </template>
 
 <script>
-  export default {
+  let links = [
+    { href: 'reports', name: 'Reports' },
+    { href: 'patients', name: 'Patients' },
+    { href: 'providers', name: 'Health Providers' },
+    { href: 'profile', name: 'My Profile' },
+    { href: 'notifications', name: 'Notifications' },
+    { href: 'staff', name: 'Staff' },
+    { href: 'trash', name: 'Deleted Files' },
+    { href: 'request-feature', name: 'Request Feature' },
+    { href: 'about', name: 'About' }
+  ]
 
+  export default {
+    name: 'sidebar',
+    data () {
+      return {
+        links
+      }
+    }
   }
 </script>
 
