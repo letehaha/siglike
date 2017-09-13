@@ -7,7 +7,7 @@
 
 <script>
   export default {
-
+    name: 'deleted-files-page'
   }
 </script>
 

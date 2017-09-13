@@ -360,6 +360,7 @@
   };
 
   export default {
+    name: 'providers-page',
     data () {
       return {
       }

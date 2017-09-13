@@ -13,6 +13,7 @@
 
 <script>
   export default {
+    name: 'about-page',
     data () {
       return {
         title: 'About Siglike!'
