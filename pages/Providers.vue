@@ -1,344 +1,268 @@
 <template lang="pug">
   
-  .heal-provide-profile
-    section.heal-provide-profile__main
-      .heal-provide-profile__tab-info
-        header.heal-provide-profile__header
-          .heal-provide-profile__info
-            button.heal-provide-profile__back
-              | arrow_left
+  .heal-provider
+    section.heal-provider__main
+      ul.heal-provider__list
+        li.heal-provider__item(v-for='item in providers')
+          label.heal-provider__item-check
+            input.heal-provider__item-check-field(type='checkbox')
+            .heal-provider__item-check-style(v-on:click='selectProvider')
+              | Check
 
-            .heal-provide-profile__photo
-              img.heal-provide-profile__photo-img(src='images/users/user-doctor.jpg', alt='Doctor')
+          .heal-provider__item-photo(v-on:click='unSelectProvider')
+            .heal-provider__item-photo-mask
+              | Check
             
-            .heal-provide-profile__bio
-              .heal-provide-profile__bio-name
-                | Dr. Williber
+            img.heal-provider__item-photo-img(:src='item.photo', :alt='item.name')
 
-              .heal-provide-profile__bio-role
-                .heal-provide-profile__bio-role-icon
-                  | radiologist
-                
-                | Radiologist
+          .heal-provider__item-info
+            .heal-provider__item-name
+              | {{ item.name }}
 
-            ul.heal-provide-profile__files-info
-              li.heal-provide-profile__files-item
-                .heal-provide-profile__files-title
-                  | Send files
+            .heal-provider__item-bio
+              | {{ item.bio }}
 
-                button.heal-provide-profile__files-btn
-                  | 57
+            .heal-provider__item-location
+              | {{ item.location }}
 
-              li.heal-provide-profile__files-item
-                .heal-provide-profile__files-title
-                  | Received files
-
-                button.heal-provide-profile__files-btn
-                  | 113
-
-          .heal-provide-profile__nav#tabs__btns-list(v-on:click='showTab')
-            button.heal-provide-profile__item
-              | User Info
-
-            button.heal-provide-profile__item
-              | Report History
-        
-        #tabs__content-list.heal-provide-profile__body.scrollable
-          .heal-provide-profile__body-content
-            ul.heal-provide-profile__info-list
-              li.heal-provide-profile__info-item(v-for='item in provider.user_info')
-                .heal-provide-profile__info-header
-                  .heal-provide-profile__info-header-title
-                    | {{ item.title }}
-
-                ul.heal-provide-profile__info-body
-                  li.heal-provide-profile__info-elem(v-for='info in item.items')
-                    .heal-provide-profile__info-elem-title
-                      .heal-provide-profile__info-elem-title-icon
-                        | {{ info.icon }}
-
-                      | {{ info.title }}
-
-                    .heal-provide-profile__info-elem-info
-                      | {{ info.info }}
-
-                  li.heal-provide-profile__info-elem.heal-provide-profile__info-elem--note(v-if='item.note.status === true')
-                    .heal-provide-profile__info-elem-note
-                      | {{ item.note.message }}
-          
-          .heal-provide-profile__body-content
-            .heal-provide-profile__reports
-              .heal-provide-profile__reports-elem.heal-provide-profile__reports-elem--folders
-                .heal-provide-profile__reports-title
-                  | Folders
-                
-                ul.heal-provide-profile__reports-list
-                  li.heal-provide-profile__reports-item(v-for='folder in provider.report_history.folders')
-                    .heal-provide-profile__reports-item-icon
-                      | {{ folder.icon }}
-
-                    .heal-provide-profile__reports-item-name
-                      | {{ folder.name }}
-
-                    .heal-provide-profile__reports-item-date
-                      | {{ folder.date }}
-              
-              .heal-provide-profile__reports-elem.heal-provide-profile__reports-elem--files
-                .heal-provide-profile__reports-title
-                  | Files
-
-                ul.heal-provide-profile__reports-list
-                  li.heal-provide-profile__reports-item(v-for='file in provider.report_history.files')
-                    .heal-provide-profile__reports-item-icon
-                      | {{ file.icon }}
-
-                    .heal-provide-profile__reports-item-name
-                      | {{ file.name }}
-
-                    .heal-provide-profile__reports-item-date
-                      | {{ file.date }}
-
+          .heal-provider__item-share
+            button.heal-provider__item-share-button.js-share-open-btn(type='button')
+              | Share
+    
     aside.heal-provide-profile__addons
-      button.heal-provide-profile__share.js-share-open-btn(type='button', title='Share')
-        | Share
+      button.heal-provide-profile__share.js-add-heal-provider(type='button', title='Add heal provider')
+        | Add heal provider
 
-      button.heal-provide-profile__user-delete(type='button', title='Delete Provider')
-        .heal-provide-profile__user-delete-icon
-          | Basket
+      .heal-provide-profile__share-inner#js-share
+        .heal-provide-profile__share-title
+          | Share
 
-        | Delete Provider
+        ul.heal-provide-profile__share-list
+          li.heal-provide-profile__share-item.heal-provide-profile__share-item--twitter
+            a.heal-provide-profile__share-link(href='#')
+              | twitter
+
+          li.heal-provide-profile__share-item.heal-provide-profile__share-item--facebook
+            a.heal-provide-profile__share-link(href='#')
+              | facebook
+
+          li.heal-provide-profile__share-item.heal-provide-profile__share-item--google
+            a.heal-provide-profile__share-link(href='#')
+              | google_plus
+
+        .heal-provide-profile__share-copy
+          .heal-provide-profile__share-copy-title
+            | Copy Link
+
+          .heal-provide-profile__share-copy-field
+            input.heal-provide-profile__share-copy-input#js-share-copy-input
+            
+            button.heal-provide-profile__share-copy-btn#js-share-copy-button(type='button', title='Copy link')
+              | copy
+
+              .heal-provide-profile__share-copy-tooltip
+                | Copied!
+
+          .heal-provide-profile__share-cancel
+            button.heal-provide-profile__share-cancel-btn#js-cancel-share(type='button', title='Close')
+              | Cancel
 
 </template>
 
 <script>
-  function HTMLCollectionToArray (array) {
-    return Array.prototype.slice.call(array)
-  }
+  // function HTMLCollectionToArray (array) {
+  //   return Array.prototype.slice.call(array)
+  // }
 
-  let provider = {
-    user_info: {
-      basic_info: {
-        title: 'Basic Info',
-        items: [
-          { icon: 'Prof', title: 'Facility Name', info: 'Sadbhav Hospital' }
-        ],
-        note: {
-          status: false,
-          message: ''
-        }
-      },
-      experiance: {
-        title: 'Work and Education',
-        items: [
-          { icon: 'Prof', title: 'Education', info: 'MBBS , MD (Medicine)' },
-          { icon: 'Prof', title: 'Specialty', info: 'Radiologist' },
-          { icon: 'Prof', title: 'Experiance', info: '30 Year' }
-        ],
-        note: {
-          status: false,
-          message: ''
-        }
-      },
-      address: {
-        title: 'Address',
-        items: [
-          { icon: 'Prof', title: 'Address', info: '156 – O Block' },
-          { icon: 'Prof', title: 'Area', info: 'Patel State' },
-          { icon: 'Prof', title: 'City', info: 'Naranpura' }
-        ],
-        note: {
-          status: false,
-          message: ''
-        }
-      },
-      persons: {
-        title: 'Contact Persons',
-        items: [
-          { icon: 'Prof', title: 'Reception', info: '+91 021 1234567' }
-        ],
-        note: {
-          status: false,
-          message: ''
-        }
-      },
-      contact: {
-        title: 'Personal Contact',
-        items: [
-          { icon: 'Prof', title: 'Dr. Williber', info: '+91 021 1234567' }
-        ],
-        note: {
-          status: true,
-          message: 'Call in emergency only'
-        }
-      }
-    },
-    report_history: {
-      files: [
-        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
-        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
-        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
-        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' }
-      ],
-      folders: [
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' }
-      ]
-    }
-  }
+  let providers = [
+    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
+    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
+    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
+    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
+    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' }
+  ]
 
   export default {
     name: 'providers-page',
     data () {
       return {
-        provider: provider
+        providers: providers
       }
     },
     methods: {
-      activeTab () {
-        let tabsBtns = document.getElementById('tabs__btns-list')
-        let childrens = HTMLCollectionToArray(tabsBtns.children)
-
-        function checkChildClass (childrens, className) {
-          let i = 0
-
-          while (i < childrens.length) {
-            let item = childrens[i]
-
-            if (item.classList.contains(className.toString())) {
-              return i
-            }
-            i++
+      providerToggleCheckbox (element) {
+        element.classList.toggle('heal-provider__item--checked')
+      },
+      selectProvider () {
+        let target = event.target
+        while (true) {
+          if (target.classList.contains('heal-provider__item')) {
+            this.providerToggleCheckbox(target)
+            return false
           }
-        };
 
-        if (checkChildClass(childrens, 'active') === undefined) {
-          let child = childrens[0]
-
-          child.classList.add('active')
-          return 0
-        } else {
-          return checkChildClass(childrens, 'active')
+          target = target.parentNode
         }
       },
-      showCurrentTab () {
-        let tab = this.activeTab()
-        let tabs = HTMLCollectionToArray(document.getElementById('tabs__content-list').children)
-        let activeTabBtn = tabs[tab]
-        console.log(activeTabBtn)
+      unSelectProvider () {
+        let target = event.target
+        while (true) {
+          if (target.classList.contains('heal-provider__item')) {
+            if (target.classList.contains('heal-provider__item--checked')) {
+              this.providerToggleCheckbox(target)
+              return false
+            }
+            return false
+          }
 
-        activeTabBtn.classList.add('visible')
-      },
-      showTab (e) {
-        let target = e.target
-        let tabs = HTMLCollectionToArray(e.currentTarget.children)
-        let contentList = document.getElementById('tabs__content-list')
-        let tabsContent = HTMLCollectionToArray(contentList.children)
-
-        tabs.forEach(function (item) {
-          item.classList.remove('active')
-        })
-
-        tabsContent.forEach(function (item) {
-          item.classList.remove('visible')
-        })
-
-        target.classList.add('active')
-
-        this.showCurrentTab()
+          target = target.parentNode
+        }
       }
-    },
-    mounted: function () {
-      this.$nextTick(function () {
-        this.showCurrentTab()
-      })
     }
   }
 </script>
 
 <style lang="sass">
 
-  .heal-provide-profile
+  .heal-provider
     display: flex
     height: 100%
 
-  .heal-provide-profile__main
+  .heal-provider__main
+    border-top: 1px solid $light-grey
+    padding: 10px
     width: calc(100% - 300px)
 
-  .heal-provide-profile__header
-    @extend %profile-header
+  .heal-provider__list
+    display: flex
+    flex-wrap: wrap
 
-  .heal-provide-profile__info
-    @extend %profile-info
+  .heal-provider__item
+    width: calc(33.333% - 7px)
+    height: 110px
+    background-color: #fff
+    padding: 5px 15px 15px 10px
+    border: 1px solid $light-grey
+    border-radius: 3px
+    display: flex
+    
+    &:not(:nth-child(3n+1))
+      margin-left: 10px
 
-  .heal-provide-profile__back
-    width: 42px // 22px + 20px
-    height: 65px // 15px + 20px
-    background-color: transparent
-    border: none
-    font-size: 20px
-    padding: 20px 0 20px 20px
+    &:nth-child(n+4)
+      margin-top: 5px
 
-    svg
-      height: 100%
-      width: 100%
+    &.heal-provider__item--checked
+      border-color: $light-green
 
-  .heal-provide-profile__photo
-    @extend %profile-photo
+  .heal-provider__item-check
+    margin: auto 10px auto 0
+    opacity: 0
+    width: 18px
+    height: 18px
+    position: relative
+    user-select: none
 
-  .heal-provide-profile__photo-img
-    @extend %profile-photo-img
+    .heal-provider__item:hover &,
+    .heal-provider__item--checked &
+      opacity: 1
 
-  .heal-provide-profile__bio
-    @extend %profile-bio
+  .heal-provider__item-check-field
+    opacity: 0
 
-  .heal-provide-profile__bio-name
-    @extend %profile-bio-name
-
-  .heal-provide-profile__bio-role
-    @extend %profile-bio-role
-
-  .heal-provide-profile__bio-role-icon
-    @extend %profile-bio-role-icon
-
-  .heal-provide-profile__files-info
-    margin-left: auto
-    text-align: right
-
-  .heal-provide-profile__files-item
-    &:not(:first-child)
-      margin-top: 10px
-
-  .heal-provide-profile__files-title
-    font-size: 12px
-    color: $text-color
-    margin-bottom: 5px
-
-  .heal-provide-profile__files-btn
-    padding: 5px 25px
-    border: 1px solid $light-green
-    color: $light-green
-    background-color: transparent
-    border-radius: 30px
-    transition: .15s ease-out
-
-    &:hover
-      background-color: $light-green
-      color: #fff
-
-  .heal-provide-profile__nav
+  .heal-provider__item-check-style
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    background-color: #fff
+    color: #fff
+    border: 1px solid $light-grey
+    border-radius: 3px
     display: flex
 
-  .heal-provide-profile__item
-    @extend %tab
+    .heal-provider__item--checked &
+      background-color: $light-green
 
-    &.active
-      @extend %tab-active
+      svg
+        opacity: 1
+
+    svg
+      opacity: 0
+      margin: auto
+      width: 10px
+      height: 10px
+
+  .heal-provider__item-photo
+    width: 65px
+    height: 65px
+    overflow: hidden
+    border-radius: 50%
+    margin-right: 10px
+    position: relative
+
+  .heal-provider__item-photo-img
+    display: block
+    width: 100%
+    height: 100%
+
+  .heal-provider__item-photo-mask
+    background-color: $light-green
+    color: #fff
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    opacity: 0
+    display: flex
+
+    .heal-provider__item--checked &
+      opacity: 1
+
+    svg
+      width: 30px
+      height: 30px
+      margin: auto
+
+  .heal-provider__item-info
+    margin: auto 0
+
+  .heal-provider__item-name
+    font-size: 20px
+    font-weight: 400
+    color: #000
+    margin-bottom: 5px
+
+  .heal-provider__item-bio,
+  .heal-provider__item-location
+    font-size: 16px
+    color: #cecece
+    +font-smoothing
+
+  .heal-provider__item-location
+    margin-top: 10px
+
+  .heal-provider__item-share
+    margin-left: auto
+    margin-top: auto
+
+  .heal-provider__item-share-button
+    width: 95px
+    color: $light-green
+    border: 1px solid $light-grey
+    border-radius: 30px
+    font-size: 16px
+    height: 32px
+    cursor: pointer
+    background-color: #fff
+
+    .heal-provider__item:hover &,
+    .heal-provider__item--checked &
+      color: #fff
+      border-color: $light-green
+      background-color: $light-green
 
   .heal-provide-profile__addons
     @extend %addons

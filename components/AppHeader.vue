@@ -14,35 +14,22 @@
           button.header__search-submit(type='submit', title='Search')
       
       .header__notifications.header__notifications--present#js-header-notifications
-        button.header__notifications-btn#js-header__notifications-btn(title='Show Notifications')
+        button.header__notifications-btn#js-header__notifications-btn(title='Show Notifications', v-on:click='showNotifications')
           | notifications
         
         .header__notifications-panel#js-header__notifications-panel
           ul.header__notifications-list#js-header__notifications-list
-            li.header__notifications-item
+            li.header__notifications-item(v-for='item in notifications')
               .header__notifications-photo
-                img.header__notifications-photo-img(src='images/users/user-doctor.jpg', alt='Doctor')
+                img.header__notifications-photo-img(:src='item.photo', :alt='item.author')
 
               .header__notifications-message
-                a.header__notifications-link(href='#')
-                  | Dr. Shiley 
+                a.header__notifications-link(:href='item.href')
+                  | {{ item.author }} 
                 
-                | send a file.
+                | {{ item.action }}.
               
-              button.header__notifications-close(type='button', title='Delete')
-                | close
-
-            li.header__notifications-item
-              .header__notifications-photo
-                img.header__notifications-photo-img(src='images/users/user-doctor.jpg', alt='Doctor')
-
-              .header__notifications-message
-                a.header__notifications-link(href='#')
-                  | Dr. Shiley 
-                
-                | send a file.
-              
-              button.header__notifications-close(type='button', title='Delete')
+              button.header__notifications-close(type='button', title='Delete', v-on:click='hideNotifications')
                 | close
 
           .header__notifications-footer
@@ -51,9 +38,53 @@
 </template>
 
 <script>
-  
+  let notifications = [
+    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
+    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
+    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Kadamb Diagonitics', action: 'deleted his profile.' },
+    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Kadamb Diagonitics', action: 'viewed your profile.' },
+    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'type an message.' }
+  ]
+
   export default {
-    name: 'app-header'
+    name: 'app-header',
+    data () {
+      return {
+        notifications: notifications
+      }
+    },
+    methods: {
+      checkHeaderNotifications () {
+        let headerNotificationsPanel = document.getElementById('js-header__notifications-panel')
+        let headerNotifications = document.getElementById('js-header-notifications')
+        if (document.getElementById('js-header__notifications-list').children.length === 0) {
+          headerNotificationsPanel.classList.remove('header__notifications-panel--active')
+          headerNotifications.classList.remove('header__notifications--present')
+        }
+      },
+      showNotifications () {
+        let headerNotificationsPanel = document.getElementById('js-header__notifications-panel')
+        let headerNotifications = document.getElementById('js-header-notifications')
+
+        if (!headerNotifications.classList.contains('header__notifications--present')) {
+          return false
+        }
+
+        headerNotificationsPanel.classList.toggle('header__notifications-panel--active')
+      },
+      hideNotifications () {
+        let target = event.target
+        while (target !== this) {
+          if (target.classList.contains('header__notifications-close')) {
+            target.parentNode.parentNode.removeChild(target.parentNode)
+            this.checkHeaderNotifications()
+            return false
+          }
+
+          target = target.parentNode
+        }
+      }
+    }
   }
 </script>
 
