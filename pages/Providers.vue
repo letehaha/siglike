@@ -46,129 +46,25 @@
         #tabs__content-list.heal-provide-profile__body.scrollable
           .heal-provide-profile__body-content
             ul.heal-provide-profile__info-list
-              li.heal-provide-profile__info-item
+              li.heal-provide-profile__info-item(v-for='item in provider.user_info')
                 .heal-provide-profile__info-header
                   .heal-provide-profile__info-header-title
-                    | Basic Info
+                    | {{ item.title }}
 
                 ul.heal-provide-profile__info-body
-                  li.heal-provide-profile__info-elem
+                  li.heal-provide-profile__info-elem(v-for='info in item.items')
                     .heal-provide-profile__info-elem-title
                       .heal-provide-profile__info-elem-title-icon
-                        | my_profile
+                        | {{ info.icon }}
 
-                      | Facility Name
-
-                    .heal-provide-profile__info-elem-info
-                      | Sadbhav Hospital
-
-              li.heal-provide-profile__info-item
-                .heal-provide-profile__info-header
-                  .heal-provide-profile__info-header-title
-                    | Work and Education
-
-                ul.heal-provide-profile__info-body
-                  li.heal-provide-profile__info-elem
-                    .heal-provide-profile__info-elem-title
-                      .heal-provide-profile__info-elem-title-icon
-                        | my_profile
-
-                      | Education
+                      | {{ info.title }}
 
                     .heal-provide-profile__info-elem-info
-                      | MBBS , MD (Medicine)
+                      | {{ info.info }}
 
-                  li.heal-provide-profile__info-elem
-                    .heal-provide-profile__info-elem-title
-                      .heal-provide-profile__info-elem-title-icon
-                        | my_profile
-
-                      | Specialty
-
-                    .heal-provide-profile__info-elem-info
-                      | Radiologist
-
-                  li.heal-provide-profile__info-elem
-                    .heal-provide-profile__info-elem-title
-                      .heal-provide-profile__info-elem-title-icon
-                        | my_profile
-
-                      | Experiance
-
-                    .heal-provide-profile__info-elem-info
-                      | 30 Year
-                
-              li.heal-provide-profile__info-item
-                .heal-provide-profile__info-header
-                  .heal-provide-profile__info-header-title
-                    | Address
-
-                ul.heal-provide-profile__info-body
-                  li.heal-provide-profile__info-elem
-                    .heal-provide-profile__info-elem-title
-                      .heal-provide-profile__info-elem-title-icon
-                        | my_profile
-
-                      | Address
-
-                    .heal-provide-profile__info-elem-info
-                      | 156 – O Block
-
-                  li.heal-provide-profile__info-elem
-                    .heal-provide-profile__info-elem-title
-                      .heal-provide-profile__info-elem-title-icon
-                        | my_profile
-
-                      | Area
-
-                    .heal-provide-profile__info-elem-info
-                      | Patel State
-
-                  li.heal-provide-profile__info-elem
-                    .heal-provide-profile__info-elem-title
-                      .heal-provide-profile__info-elem-title-icon
-                        | my_profile
-
-                      | City
-
-                    .heal-provide-profile__info-elem-info
-                      | Naranpura
-
-              li.heal-provide-profile__info-item
-                .heal-provide-profile__info-header
-                  .heal-provide-profile__info-header-title
-                    | Contact Persons
-
-                ul.heal-provide-profile__info-body
-                  li.heal-provide-profile__info-elem
-                    .heal-provide-profile__info-elem-title
-                      .heal-provide-profile__info-elem-title-icon
-                        | my_profile
-
-                      | Reception
-
-                    .heal-provide-profile__info-elem-info
-                      | +91 021 1234567
-
-              li.heal-provide-profile__info-item
-                .heal-provide-profile__info-header
-                  .heal-provide-profile__info-header-title
-                    | Personal Contact
-
-                ul.heal-provide-profile__info-body
-                  li.heal-provide-profile__info-elem
-                    .heal-provide-profile__info-elem-title
-                      .heal-provide-profile__info-elem-title-icon
-                        | my_profile
-
-                      | Dr. Williber
-
-                    .heal-provide-profile__info-elem-info
-                      | +91 021 1234567
-
-                  li.heal-provide-profile__info-elem.heal-provide-profile__info-elem--note
+                  li.heal-provide-profile__info-elem.heal-provide-profile__info-elem--note(v-if='item.note.status === true')
                     .heal-provide-profile__info-elem-note
-                      | Call in emergency only
+                      | {{ item.note.message }}
           
           .heal-provide-profile__body-content
             .heal-provide-profile__reports
@@ -177,130 +73,30 @@
                   | Folders
                 
                 ul.heal-provide-profile__reports-list
-                  li.heal-provide-profile__reports-item
+                  li.heal-provide-profile__reports-item(v-for='folder in provider.report_history.folders')
                     .heal-provide-profile__reports-item-icon
-                      | Folder
+                      | {{ folder.icon }}
 
                     .heal-provide-profile__reports-item-name
-                      | Blood Pressure Reports
+                      | {{ folder.name }}
 
                     .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | Folder
-
-                    .heal-provide-profile__reports-item-name
-                      | Blood Pressure Reports
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | Folder
-
-                    .heal-provide-profile__reports-item-name
-                      | Blood Pressure Reports
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | Folder
-
-                    .heal-provide-profile__reports-item-name
-                      | Blood Pressure Reports
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | Folder
-
-                    .heal-provide-profile__reports-item-name
-                      | Blood Pressure Reports
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | Folder
-
-                    .heal-provide-profile__reports-item-name
-                      | Blood Pressure Reports
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | Folder
-
-                    .heal-provide-profile__reports-item-name
-                      | Blood Pressure Reports
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | Folder
-
-                    .heal-provide-profile__reports-item-name
-                      | Blood Pressure Reports
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
+                      | {{ folder.date }}
               
               .heal-provide-profile__reports-elem.heal-provide-profile__reports-elem--files
                 .heal-provide-profile__reports-title
                   | Files
 
                 ul.heal-provide-profile__reports-list
-                  li.heal-provide-profile__reports-item
+                  li.heal-provide-profile__reports-item(v-for='file in provider.report_history.files')
                     .heal-provide-profile__reports-item-icon
-                      | File
+                      | {{ file.icon }}
 
                     .heal-provide-profile__reports-item-name
-                      | Dr. Juhaid Doc.
+                      | {{ file.name }}
 
                     .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-                  
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | File
-
-                    .heal-provide-profile__reports-item-name
-                      | Dr. Juhaid Doc.
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-                  
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | File
-
-                    .heal-provide-profile__reports-item-name
-                      | Dr. Juhaid Doc.
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
-                  
-                  li.heal-provide-profile__reports-item
-                    .heal-provide-profile__reports-item-icon
-                      | File
-
-                    .heal-provide-profile__reports-item-name
-                      | Dr. Juhaid Doc.
-
-                    .heal-provide-profile__reports-item-date
-                      | 19/07/17 , 9:38 PM
+                      | {{ file.date }}
 
     aside.heal-provide-profile__addons
       button.heal-provide-profile__share.js-share-open-btn(type='button', title='Share')
@@ -319,60 +115,130 @@
     return Array.prototype.slice.call(array)
   }
 
-  function variable () { // TODO: fixed it
-    let contentList = document.getElementById('tabs__content-list')
-    return contentList
-  }
-
-  function showCurrentTab () { // TODO: fixed call document.fetElementById
-    function activeTab () {
-      let tabsBtns = document.getElementById('tabs__btns-list')
-      let childrens = HTMLCollectionToArray(tabsBtns.children)
-
-      function checkChildClass (childrens, className) {
-        let i = 0
-
-        while (i < childrens.length) {
-          let item = childrens[i]
-
-          if (item.classList.contains(className.toString())) {
-            return i
-          }
-          i++
+  let provider = {
+    user_info: {
+      basic_info: {
+        title: 'Basic Info',
+        items: [
+          { icon: 'Prof', title: 'Facility Name', info: 'Sadbhav Hospital' }
+        ],
+        note: {
+          status: false,
+          message: ''
         }
-      };
-
-      if (checkChildClass(childrens, 'active') === undefined) {
-        let child = childrens[0]
-
-        child.classList.add('active')
-        return 0
-      } else {
-        return checkChildClass(childrens, 'active')
+      },
+      experiance: {
+        title: 'Work and Education',
+        items: [
+          { icon: 'Prof', title: 'Education', info: 'MBBS , MD (Medicine)' },
+          { icon: 'Prof', title: 'Specialty', info: 'Radiologist' },
+          { icon: 'Prof', title: 'Experiance', info: '30 Year' }
+        ],
+        note: {
+          status: false,
+          message: ''
+        }
+      },
+      address: {
+        title: 'Address',
+        items: [
+          { icon: 'Prof', title: 'Address', info: '156 – O Block' },
+          { icon: 'Prof', title: 'Area', info: 'Patel State' },
+          { icon: 'Prof', title: 'City', info: 'Naranpura' }
+        ],
+        note: {
+          status: false,
+          message: ''
+        }
+      },
+      persons: {
+        title: 'Contact Persons',
+        items: [
+          { icon: 'Prof', title: 'Reception', info: '+91 021 1234567' }
+        ],
+        note: {
+          status: false,
+          message: ''
+        }
+      },
+      contact: {
+        title: 'Personal Contact',
+        items: [
+          { icon: 'Prof', title: 'Dr. Williber', info: '+91 021 1234567' }
+        ],
+        note: {
+          status: true,
+          message: 'Call in emergency only'
+        }
       }
-    };
-
-    let tab = activeTab()
-    let tabs = HTMLCollectionToArray(document.getElementById('tabs__content-list').children)
-    let activeTabBtn = tabs[tab]
-
-    activeTabBtn.classList.add('visible')
-  };
+    },
+    report_history: {
+      files: [
+        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
+        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
+        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
+        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' }
+      ],
+      folders: [
+        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' }
+      ]
+    }
+  }
 
   export default {
     name: 'providers-page',
     data () {
       return {
+        provider: provider
       }
     },
-    asyncData () {
-      return showCurrentTab()
-    },
     methods: {
-      showTab: (e) => {
+      activeTab () {
+        let tabsBtns = document.getElementById('tabs__btns-list')
+        let childrens = HTMLCollectionToArray(tabsBtns.children)
+
+        function checkChildClass (childrens, className) {
+          let i = 0
+
+          while (i < childrens.length) {
+            let item = childrens[i]
+
+            if (item.classList.contains(className.toString())) {
+              return i
+            }
+            i++
+          }
+        };
+
+        if (checkChildClass(childrens, 'active') === undefined) {
+          let child = childrens[0]
+
+          child.classList.add('active')
+          return 0
+        } else {
+          return checkChildClass(childrens, 'active')
+        }
+      },
+      showCurrentTab () {
+        let tab = this.activeTab()
+        let tabs = HTMLCollectionToArray(document.getElementById('tabs__content-list').children)
+        let activeTabBtn = tabs[tab]
+        console.log(activeTabBtn)
+
+        activeTabBtn.classList.add('visible')
+      },
+      showTab (e) {
         let target = e.target
         let tabs = HTMLCollectionToArray(e.currentTarget.children)
-        let tabsContent = HTMLCollectionToArray(variable().children) // TODO: fixed it
+        let contentList = document.getElementById('tabs__content-list')
+        let tabsContent = HTMLCollectionToArray(contentList.children)
 
         tabs.forEach(function (item) {
           item.classList.remove('active')
@@ -384,8 +250,13 @@
 
         target.classList.add('active')
 
-        showCurrentTab()
+        this.showCurrentTab()
       }
+    },
+    mounted: function () {
+      this.$nextTick(function () {
+        this.showCurrentTab()
+      })
     }
   }
 </script>
@@ -615,6 +486,9 @@
     
     &.visible
       display: block
+
+  .heal-provide-profile__reports
+    text-align: left
 
   .heal-provide-profile__reports-elem
     &:not(:first-child)
