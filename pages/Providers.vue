@@ -70,10 +70,6 @@
 </template>
 
 <script>
-  // function HTMLCollectionToArray (array) {
-  //   return Array.prototype.slice.call(array)
-  // }
-
   let providers = [
     { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
     { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },

@@ -88,8 +88,8 @@
   }
 </script>
 
-<style lang="sass"> // TODO: fix excess rules
-
+<style lang="sass"> 
+  // TODO: fix excess rules
   .header
     height: 77px
 
