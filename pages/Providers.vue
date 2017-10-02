@@ -13,7 +13,7 @@
             .heal-provider__item-photo-mask
               | Check
             
-            img.heal-provider__item-photo-img(:src='item.photo', :alt='item.name')
+            img.heal-provider__item-photo-img(:src="`img/${item.photo}`", :alt='item.name')
 
           .heal-provider__item-info
             .heal-provider__item-name
@@ -71,11 +71,11 @@
 
 <script>
   let providers = [
-    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
-    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
-    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
-    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
-    { photo: 'images/users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' }
+    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
+    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
+    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
+    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
+    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' }
   ]
 
   export default {

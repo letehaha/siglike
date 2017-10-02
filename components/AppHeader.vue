@@ -3,7 +3,7 @@
   header.header
     .header__wrapper
       nuxt-link.logotype(to='/')
-        | logotype
+        Logotype
 
       .header__search
         form.header__search-form
@@ -21,7 +21,7 @@
           ul.header__notifications-list#js-header__notifications-list
             li.header__notifications-item(v-for='item in notifications')
               .header__notifications-photo
-                img.header__notifications-photo-img(:src='item.photo', :alt='item.author')
+                img.header__notifications-photo-img(:src="`img/${item.photo}`", :alt='item.author')
 
               .header__notifications-message
                 a.header__notifications-link(:href='item.href')
@@ -38,12 +38,14 @@
 </template>
 
 <script>
+  import Logotype from './Logotype'
+
   let notifications = [
-    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
-    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
-    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Kadamb Diagonitics', action: 'deleted his profile.' },
-    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Kadamb Diagonitics', action: 'viewed your profile.' },
-    { photo: 'images/users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'type an message.' }
+    { photo: 'users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
+    { photo: 'users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
+    { photo: 'users/user-doctor.jpg', href: '#', author: 'Kadamb Diagonitics', action: 'deleted his profile.' },
+    { photo: 'users/user-doctor.jpg', href: '#', author: 'Kadamb Diagonitics', action: 'viewed your profile.' },
+    { photo: 'users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'type an message.' }
   ]
 
   export default {
@@ -53,6 +55,7 @@
         notifications: notifications
       }
     },
+    components: { Logotype },
     methods: {
       checkHeaderNotifications () {
         let headerNotificationsPanel = document.getElementById('js-header__notifications-panel')
