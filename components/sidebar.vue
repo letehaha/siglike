@@ -3,7 +3,7 @@
   aside.sidebar.sidebar--left
     .sidebar__user
       .sidebar__user-photo
-        img(src='images/users/user-doctor.jpg', alt='Doctor')
+        img(src='img/users/user-doctor.jpg', alt='Doctor')
 
       .sidebar__user-name
         | Dr. John Wisley
