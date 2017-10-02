@@ -46,7 +46,7 @@
     },
     methods: {
       createSvg () {
-        let items = HTMLCollectionToArray(document.getElementsByClassName(this.name + '-svg-icon'))
+        let items = HTMLCollectionToArray(document.getElementsByClassName(this.svg_class_name))
         let name = this.name
 
         items.forEach(function (item) {
