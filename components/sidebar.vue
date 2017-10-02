@@ -34,7 +34,7 @@
     { href: 'notifications', name: 'Notifications' },
     { href: 'staff', name: 'Staff' },
     { href: 'trash', name: 'Deleted Files' },
-    { href: 'request-feature', name: 'Request Feature' },
+    { href: 'feature', name: 'Request Feature' },
     { href: 'about', name: 'About' }
   ]
 

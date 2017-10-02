@@ -1,13 +1,13 @@
 <template lang="pug">
   
   h1
-    | Deleted Files page
+    | Staff page
 
 </template>
 
 <script>
   export default {
-    name: 'deleted-files-page'
+    name: 'staff-page'
   }
 </script>
 
