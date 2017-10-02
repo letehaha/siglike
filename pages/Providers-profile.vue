@@ -6,7 +6,7 @@
         header.heal-provide-profile__header
           .heal-provide-profile__info
             nuxt-link.heal-provide-profile__back(to='/providers')
-              | arrow_left
+              <Icon name='arrow_left'></Icon>
 
             .heal-provide-profile__photo
               img.heal-provide-profile__photo-img(src='img/users/user-doctor.jpg', alt='Doctor')
@@ -17,7 +17,7 @@
 
               .heal-provide-profile__bio-role
                 .heal-provide-profile__bio-role-icon
-                  | radiologist
+                  <Icon name='radiologist'></Icon>
                 
                 | Radiologist
 
@@ -55,7 +55,7 @@
                   li.heal-provide-profile__info-elem(v-for='info in item.items')
                     .heal-provide-profile__info-elem-title
                       .heal-provide-profile__info-elem-title-icon
-                        | {{ info.icon }}
+                        <Icon :name='info.icon'></Icon>
 
                       | {{ info.title }}
 
@@ -75,7 +75,7 @@
                 ul.heal-provide-profile__reports-list
                   li.heal-provide-profile__reports-item(v-for='folder in provider.report_history.folders')
                     .heal-provide-profile__reports-item-icon
-                      | {{ folder.icon }}
+                      <Icon :name='folder.icon'></Icon>
 
                     .heal-provide-profile__reports-item-name
                       | {{ folder.name }}
@@ -90,7 +90,7 @@
                 ul.heal-provide-profile__reports-list
                   li.heal-provide-profile__reports-item(v-for='file in provider.report_history.files')
                     .heal-provide-profile__reports-item-icon
-                      | {{ file.icon }}
+                      <Icon :name='file.icon'></Icon>
 
                     .heal-provide-profile__reports-item-name
                       | {{ file.name }}
@@ -104,13 +104,15 @@
 
       button.heal-provide-profile__user-delete(type='button', title='Delete Provider')
         .heal-provide-profile__user-delete-icon
-          | Basket
+          <Icon name='basket'></Icon>
 
         | Delete Provider
 
 </template>
 
 <script>
+  import Icon from '~/components/Icon'
+
   function HTMLCollectionToArray (array) {
     return Array.prototype.slice.call(array)
   }
@@ -120,7 +122,7 @@
       basic_info: {
         title: 'Basic Info',
         items: [
-          { icon: 'Prof', title: 'Facility Name', info: 'Sadbhav Hospital' }
+          { icon: 'my_profile', title: 'Facility Name', info: 'Sadbhav Hospital' }
         ],
         note: {
           status: false,
@@ -130,9 +132,9 @@
       experiance: {
         title: 'Work and Education',
         items: [
-          { icon: 'Prof', title: 'Education', info: 'MBBS , MD (Medicine)' },
-          { icon: 'Prof', title: 'Specialty', info: 'Radiologist' },
-          { icon: 'Prof', title: 'Experiance', info: '30 Year' }
+          { icon: 'my_profile', title: 'Education', info: 'MBBS , MD (Medicine)' },
+          { icon: 'my_profile', title: 'Specialty', info: 'Radiologist' },
+          { icon: 'my_profile', title: 'Experiance', info: '30 Year' }
         ],
         note: {
           status: false,
@@ -142,9 +144,9 @@
       address: {
         title: 'Address',
         items: [
-          { icon: 'Prof', title: 'Address', info: '156 – O Block' },
-          { icon: 'Prof', title: 'Area', info: 'Patel State' },
-          { icon: 'Prof', title: 'City', info: 'Naranpura' }
+          { icon: 'my_profile', title: 'Address', info: '156 – O Block' },
+          { icon: 'my_profile', title: 'Area', info: 'Patel State' },
+          { icon: 'my_profile', title: 'City', info: 'Naranpura' }
         ],
         note: {
           status: false,
@@ -154,7 +156,7 @@
       persons: {
         title: 'Contact Persons',
         items: [
-          { icon: 'Prof', title: 'Reception', info: '+91 021 1234567' }
+          { icon: 'my_profile', title: 'Reception', info: '+91 021 1234567' }
         ],
         note: {
           status: false,
@@ -164,7 +166,7 @@
       contact: {
         title: 'Personal Contact',
         items: [
-          { icon: 'Prof', title: 'Dr. Williber', info: '+91 021 1234567' }
+          { icon: 'my_profile', title: 'Dr. Williber', info: '+91 021 1234567' }
         ],
         note: {
           status: true,
@@ -174,20 +176,20 @@
     },
     report_history: {
       files: [
-        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
-        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
-        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
-        { icon: 'File', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' }
+        { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
+        { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
+        { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
+        { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' }
       ],
       folders: [
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'Fold', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' }
+        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
+        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' }
       ]
     }
   }
@@ -199,6 +201,7 @@
         provider: provider
       }
     },
+    components: { Icon },
     methods: {
       activeTab () {
         let tabsBtns = document.getElementById('tabs__btns-list')

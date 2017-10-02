@@ -14,32 +14,37 @@
     nav.sidebar__nav
       nuxt-link.sidebar__link.sidebar__nav-link(v-for='link in links', :to='link.href')
         .sidebar__nav-link-icon
+          <Icon :name='link.icon_name'></Icon>
 
         | {{ link.name }}
 
     .sidebar__sign-out
       a.sidebar__link(href='#')
         .sidebar__sign-out-link-icon
-        
+          <Icon name='sign_out'></Icon>
+
         | Sign Out
 
 </template>
 
 <script>
+  import Icon from './Icon'
+
   let links = [
-    { href: 'reports', name: 'Reports' },
-    { href: 'patients', name: 'Patients' },
-    { href: 'providers', name: 'Health Providers' },
-    { href: 'profile', name: 'My Profile' },
-    { href: 'notifications', name: 'Notifications' },
-    { href: 'staff', name: 'Staff' },
-    { href: 'trash', name: 'Deleted Files' },
-    { href: 'feature', name: 'Request Feature' },
-    { href: 'about', name: 'About' }
+    { href: 'reports', name: 'Reports', icon_name: 'reports' },
+    { href: 'patients', name: 'Patients', icon_name: 'patients' },
+    { href: 'providers', name: 'Health Providers', icon_name: 'health_providers' },
+    { href: 'profile', name: 'My Profile', icon_name: 'my_profile' },
+    { href: 'notifications', name: 'Notifications', icon_name: 'notifications' },
+    { href: 'staff', name: 'Staff', icon_name: 'staff' },
+    { href: 'trash', name: 'Deleted Files', icon_name: 'basket' },
+    { href: 'feature', name: 'Request Feature', icon_name: 'features' },
+    { href: 'about', name: 'About', icon_name: 'about' }
   ]
 
   export default {
     name: 'sidebar',
+    components: { Icon },
     data () {
       return {
         links

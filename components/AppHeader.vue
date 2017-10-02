@@ -3,19 +3,19 @@
   header.header
     .header__wrapper
       nuxt-link.logotype(to='/')
-        Logotype
+        <Icon name='logotype'></Icon>
 
       .header__search
         form.header__search-form
           .header__search-form-icon
-            | search
+            <Icon name='search'></Icon>
           
           input.header__search-field(type='text', placeholder='Search')
           button.header__search-submit(type='submit', title='Search')
       
       .header__notifications.header__notifications--present#js-header-notifications
         button.header__notifications-btn#js-header__notifications-btn(title='Show Notifications', v-on:click='showNotifications')
-          | notifications
+          <Icon name='notifications'></Icon>
         
         .header__notifications-panel#js-header__notifications-panel
           ul.header__notifications-list#js-header__notifications-list
@@ -30,7 +30,7 @@
                 | {{ item.action }}.
               
               button.header__notifications-close(type='button', title='Delete', v-on:click='hideNotifications')
-                | close
+                <Icon name='close'></Icon>
 
           .header__notifications-footer
             | Don't have any notification
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-  import Logotype from './Logotype'
+  import Icon from './Icon'
 
   let notifications = [
     { photo: 'users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
@@ -55,7 +55,7 @@
         notifications: notifications
       }
     },
-    components: { Logotype },
+    components: { Icon },
     methods: {
       checkHeaderNotifications () {
         let headerNotificationsPanel = document.getElementById('js-header__notifications-panel')
