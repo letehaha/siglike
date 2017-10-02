@@ -1,6 +1,6 @@
 <template lang='pug'>
   
-  span(:class='svg_name')
+  span(:class='svg_class_name')
 
 </template>
 
@@ -41,7 +41,7 @@
     props: ['name'],
     data () {
       return {
-        svg_name: this.name + '-svg-icon'
+        svg_class_name: this.name + '-svg-icon' // '-svg-icon' necessary for individuality in global scope of classes
       }
     },
     methods: {
