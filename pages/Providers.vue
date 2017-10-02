@@ -7,11 +7,11 @@
           label.heal-provider__item-check
             input.heal-provider__item-check-field(type='checkbox')
             .heal-provider__item-check-style(v-on:click='selectProvider')
-              | Check
+              <Icon name='check'></Icon>
 
           .heal-provider__item-photo(v-on:click='unSelectProvider')
             .heal-provider__item-photo-mask
-              | Check
+              <Icon name='check'></Icon>
             
             img.heal-provider__item-photo-img(:src="`img/${item.photo}`", :alt='item.name')
 
@@ -70,6 +70,8 @@
 </template>
 
 <script>
+  import Icon from '~/components/Icon'
+
   let providers = [
     { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
     { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
@@ -85,6 +87,7 @@
         providers: providers
       }
     },
+    components: { Icon },
     methods: {
       providerToggleCheckbox (element) {
         element.classList.toggle('heal-provider__item--checked')

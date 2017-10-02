@@ -3,7 +3,7 @@
   section.about
     .about__wrapper
       .about__logotype
-        Logotype
+        <Icon name='logotype'></Icon>
 
       .about__descr
         p 
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import Logotype from '~/components/Logotype'
+  import Icon from '~/components/Icon'
 
   export default {
     name: 'about-page',
@@ -21,7 +21,7 @@
         title: 'About Siglike!'
       }
     },
-    components: { Logotype },
+    components: { Icon },
     head () {
       return {
         title: this.title,
