@@ -2,7 +2,7 @@
   
   aside.sidebar.sidebar--left
     .sidebar__user
-      .sidebar__user-photo
+      nuxt-link.sidebar__user-photo(to='/providers-profile')
         img(src='img/users/user-doctor.jpg', alt='Doctor')
 
       .sidebar__user-name
@@ -67,6 +67,8 @@
     border-radius: 50%
     overflow: hidden
     margin-bottom: 15px
+    margin: 0 auto
+    display: block
 
     img
       width: 100%
