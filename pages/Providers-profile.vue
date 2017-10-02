@@ -5,11 +5,11 @@
       .heal-provide-profile__tab-info
         header.heal-provide-profile__header
           .heal-provide-profile__info
-            button.heal-provide-profile__back
+            nuxt-link.heal-provide-profile__back(to='/providers')
               | arrow_left
 
             .heal-provide-profile__photo
-              img.heal-provide-profile__photo-img(src='images/users/user-doctor.jpg', alt='Doctor')
+              img.heal-provide-profile__photo-img(src='img/users/user-doctor.jpg', alt='Doctor')
             
             .heal-provide-profile__bio
               .heal-provide-profile__bio-name
@@ -230,7 +230,6 @@
         let tab = this.activeTab()
         let tabs = HTMLCollectionToArray(document.getElementById('tabs__content-list').children)
         let activeTabBtn = tabs[tab]
-        console.log(activeTabBtn)
 
         activeTabBtn.classList.add('visible')
       },
