@@ -16,13 +16,16 @@
             img.heal-provider__item-photo-img(:src="`img/${item.photo}`", :alt='item.name')
 
           .heal-provider__item-info
-            .heal-provider__item-name
+            nuxt-link.heal-provider__item-name(to='/providers-profile')
               | {{ item.name }}
 
             .heal-provider__item-bio
               | {{ item.bio }}
 
             .heal-provider__item-location
+              .heal-provider__item-location-icon
+                <Icon name='place'></Icon>
+              
               | {{ item.location }}
 
           .heal-provider__item-share
@@ -227,6 +230,7 @@
 
   .heal-provider__item-info
     margin: auto 0
+    text-align: left
 
   .heal-provider__item-name
     font-size: 20px
@@ -242,6 +246,11 @@
 
   .heal-provider__item-location
     margin-top: 10px
+    display: flex
+  
+  .heal-provider__item-location-icon
+    width: 18px
+    margin-right: 10px
 
   .heal-provider__item-share
     margin-left: auto
