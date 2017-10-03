@@ -65,6 +65,7 @@
   .sidebar__user
     padding: 15px 25px 10px 25px
     border-bottom: 1px solid $light-grey
+    text-align: left
 
   .sidebar__user-photo
     width: 65px
@@ -72,7 +73,6 @@
     border-radius: 50%
     overflow: hidden
     margin-bottom: 15px
-    margin: 0 auto
     display: block
 
     img

@@ -36,14 +36,14 @@
                 button.heal-provide-profile__files-btn
                   | 113
 
-          .heal-provide-profile__nav#tabs__btns-list(v-on:click='showTab')
+          .heal-provide-profile__nav#tabs__btns-list(v-on:click='showTab', ref='tabsList')
             button.heal-provide-profile__item
               | User Info
 
             button.heal-provide-profile__item
               | Report History
         
-        #tabs__content-list.heal-provide-profile__body.scrollable
+        .heal-provide-profile__body.scrollable(ref='tabsContentList')
           .heal-provide-profile__body-content
             ul.heal-provide-profile__info-list
               li.heal-provide-profile__info-item(v-for='item in provider.user_info')
@@ -204,8 +204,8 @@
     components: { Icon },
     methods: {
       activeTab () {
-        let tabsBtns = document.getElementById('tabs__btns-list')
-        let childrens = HTMLCollectionToArray(tabsBtns.children)
+        let tabsBtns = this.$refs.tabsList
+        let childrens = tabsBtns.children
 
         function checkChildClass (childrens, className) {
           let i = 0
@@ -231,7 +231,7 @@
       },
       showCurrentTab () {
         let tab = this.activeTab()
-        let tabs = HTMLCollectionToArray(document.getElementById('tabs__content-list').children)
+        let tabs = this.$refs.tabsContentList.children
         let activeTabBtn = tabs[tab]
 
         activeTabBtn.classList.add('visible')
@@ -239,7 +239,7 @@
       showTab (e) {
         let target = e.target
         let tabs = HTMLCollectionToArray(e.currentTarget.children)
-        let contentList = document.getElementById('tabs__content-list')
+        let contentList = this.$refs.tabsContentList
         let tabsContent = HTMLCollectionToArray(contentList.children)
 
         tabs.forEach(function (item) {
@@ -285,6 +285,7 @@
     border: none
     font-size: 20px
     padding: 20px 0 20px 20px
+    color: $text-color
 
     svg
       height: 100%
