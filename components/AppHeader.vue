@@ -13,12 +13,12 @@
           input.header__search-field(type='text', placeholder='Search')
           button.header__search-submit(type='submit', title='Search')
       
-      .header__notifications.header__notifications--present#js-header-notifications
+      .header__notifications.header__notifications--present(ref='headerNotifications')
         button.header__notifications-btn#js-header__notifications-btn(title='Show Notifications', v-on:click='showNotifications')
           <Icon name='notifications'></Icon>
         
-        .header__notifications-panel#js-header__notifications-panel
-          ul.header__notifications-list#js-header__notifications-list
+        .header__notifications-panel(ref='notificationsPanel')
+          ul.header__notifications-list(ref='notificationsList')
             li.header__notifications-item(v-for='item in notifications')
               .header__notifications-photo
                 img.header__notifications-photo-img(:src="`img/${item.photo}`", :alt='item.author')
@@ -58,16 +58,16 @@
     components: { Icon },
     methods: {
       checkHeaderNotifications () {
-        let headerNotificationsPanel = document.getElementById('js-header__notifications-panel')
-        let headerNotifications = document.getElementById('js-header-notifications')
-        if (document.getElementById('js-header__notifications-list').children.length === 0) {
+        let headerNotificationsPanel = this.$refs.notificationsPanel
+        let headerNotifications = this.$refs.headerNotifications
+        if (this.$refs.notificationsList.children.length === 0) {
           headerNotificationsPanel.classList.remove('header__notifications-panel--active')
           headerNotifications.classList.remove('header__notifications--present')
         }
       },
       showNotifications () {
-        let headerNotificationsPanel = document.getElementById('js-header__notifications-panel')
-        let headerNotifications = document.getElementById('js-header-notifications')
+        let headerNotificationsPanel = this.$refs.notificationsPanel
+        let headerNotifications = this.$refs.headerNotifications
 
         if (!headerNotifications.classList.contains('header__notifications--present')) {
           return false
