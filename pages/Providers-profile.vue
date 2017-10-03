@@ -285,6 +285,7 @@
     border: none
     font-size: 20px
     padding: 20px 0 20px 20px
+    color: $text-color
 
     svg
       height: 100%
