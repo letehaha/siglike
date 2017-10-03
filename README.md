@@ -17,3 +17,11 @@ $ npm start
 
 # generate static project
 $ npm run generate
+```
+
+## Information about development
+* For inlining icons in html markup need to add svg icon to `static` folder. Also, need to add code of svg to `components/Icon.vue` to `icons` object.
+  
+  Use of this component:<br>
+    * Make 'import' to template<br>
+    * `<Icon name='some_name'></Icon>`, where `name` – name of svg icon in `icons` object
