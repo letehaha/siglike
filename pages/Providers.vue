@@ -7,11 +7,13 @@
           label.heal-provider__item-check
             input.heal-provider__item-check-field(type='checkbox')
             .heal-provider__item-check-style(v-on:click='selectProvider')
-              <Icon name='check'></Icon>
+              .heal-provider__item-check-style-icon
+                <Icon name='check'></Icon>
 
           .heal-provider__item-photo(v-on:click='unSelectProvider')
             .heal-provider__item-photo-mask
-              <Icon name='check'></Icon>
+              .heal-provider__item-photo-mask-icon
+                <Icon name='check'></Icon>
             
             img.heal-provider__item-photo-img(:src="`img/${item.photo}`", :alt='item.name')
 
@@ -183,18 +185,24 @@
     border: 1px solid $light-grey
     border-radius: 3px
     display: flex
+    align-items: center
+    justify-content: center
 
     .heal-provider__item--checked &
       background-color: $light-green
 
-      svg
-        opacity: 1
-
     svg
-      opacity: 0
-      margin: auto
-      width: 10px
-      height: 10px
+      width: 100%
+      height: 100%
+      display: block
+  
+  .heal-provider__item-check-style-icon
+    opacity: 0
+    width: 10px
+    height: 10px
+    
+    .heal-provider__item--checked &
+      opacity: 1
 
   .heal-provider__item-photo
     width: 65px
@@ -219,14 +227,20 @@
     height: 100%
     opacity: 0
     display: flex
+    align-items: center
+    justify-content: center
 
     .heal-provider__item--checked &
       opacity: 1
 
     svg
-      width: 30px
-      height: 30px
+      width: 100%
+      height: 100%
       margin: auto
+  
+  .heal-provider__item-photo-mask-icon
+    height: 30px
+    width: 30px
 
   .heal-provider__item-info
     margin: auto 0
