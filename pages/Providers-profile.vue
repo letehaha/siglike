@@ -36,7 +36,7 @@
                 button.heal-provide-profile__files-btn
                   | 113
 
-          .heal-provide-profile__nav#tabs__btns-list(v-on:click='showTab', ref='tabsList')
+          .heal-provide-profile__nav(v-on:click='showTab', ref='tabsList')
             button.heal-provide-profile__item
               | User Info
 
