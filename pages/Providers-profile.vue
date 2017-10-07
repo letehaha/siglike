@@ -194,6 +194,9 @@
     }
   }
 
+  const CLASS_ACTIVE = 'heal-provide-profile__item--active'
+  const CLASS_VISIBLE = 'heal-provide-profile__body-content--visible'
+
   export default {
     name: 'providers-profile-page',
     data () {
@@ -220,13 +223,13 @@
           }
         };
 
-        if (checkChildClass(childrens, 'active') === undefined) {
+        if (checkChildClass(childrens, CLASS_ACTIVE) === undefined) {
           let child = childrens[0]
 
-          child.classList.add('active')
+          child.classList.add(CLASS_ACTIVE)
           return 0
         } else {
-          return checkChildClass(childrens, 'active')
+          return checkChildClass(childrens, CLASS_ACTIVE)
         }
       },
       showCurrentTab () {
@@ -234,7 +237,7 @@
         let tabs = this.$refs.tabsContentList.children
         let activeTabBtn = tabs[tab]
 
-        activeTabBtn.classList.add('visible')
+        activeTabBtn.classList.add(CLASS_VISIBLE)
       },
       showTab (e) {
         let target = e.target
@@ -243,14 +246,14 @@
         let tabsContent = HTMLCollectionToArray(contentList.children)
 
         tabs.forEach(function (item) {
-          item.classList.remove('active')
+          item.classList.remove(CLASS_ACTIVE)
         })
 
         tabsContent.forEach(function (item) {
-          item.classList.remove('visible')
+          item.classList.remove(CLASS_VISIBLE)
         })
 
-        target.classList.add('active')
+        target.classList.add(CLASS_ACTIVE)
 
         this.showCurrentTab()
       }
@@ -340,8 +343,8 @@
   .heal-provide-profile__item
     @extend %tab
 
-    &.active
-      @extend %tab-active
+  .heal-provide-profile__item--active
+    @extend %tab-active
 
   .heal-provide-profile__addons
     @extend %addons
@@ -487,8 +490,8 @@
   .heal-provide-profile__body-content
     display: none
     
-    &.visible
-      display: block
+  .heal-provide-profile__body-content--visible
+    display: block
 
   .heal-provide-profile__reports
     text-align: left

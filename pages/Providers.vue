@@ -85,6 +85,9 @@
     { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' }
   ]
 
+  const CLASS_ITEM = 'heal-provider__item'
+  const CLASS_CHECKED = 'heal-provider__item--checked'
+
   export default {
     name: 'providers-page',
     data () {
@@ -95,12 +98,12 @@
     components: { Icon },
     methods: {
       providerToggleCheckbox (element) {
-        element.classList.toggle('heal-provider__item--checked')
+        element.classList.toggle(CLASS_CHECKED)
       },
       selectProvider () {
         let target = event.target
         while (true) {
-          if (target.classList.contains('heal-provider__item')) {
+          if (target.classList.contains(CLASS_ITEM)) {
             this.providerToggleCheckbox(target)
             return false
           }
@@ -111,8 +114,8 @@
       unSelectProvider () {
         let target = event.target
         while (true) {
-          if (target.classList.contains('heal-provider__item')) {
-            if (target.classList.contains('heal-provider__item--checked')) {
+          if (target.classList.contains(CLASS_ITEM)) {
+            if (target.classList.contains(CLASS_CHECKED)) {
               this.providerToggleCheckbox(target)
               return false
             }
