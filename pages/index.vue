@@ -1,6 +1,8 @@
 <template lang="pug">
-  h1
-    | some text
+  section
+    h1
+      | some text
+
 </template>
 
 <script>
