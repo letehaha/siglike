@@ -24,4 +24,9 @@
 </script>
 
 
-<style></style>
+<style lang='sass'>
+  
+  @import '../assets/includes/reset.sass'
+  @import '../assets/includes/global.sass'
+  
+</style>
