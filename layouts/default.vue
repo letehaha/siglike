@@ -26,7 +26,7 @@
 
 <style lang='sass'>
   
-  @import '../assets/includes/reset.sass'
-  @import '../assets/includes/global.sass'
+  @import '../assets/sass/reset.sass'
+  @import '../assets/sass/global.sass'
   
 </style>
