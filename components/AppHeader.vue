@@ -48,6 +48,10 @@
     { photo: 'users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'type an message.' }
   ]
 
+  const CLASS_PRESENT = 'header__notifications--present'
+  const CLASS_ACTIVE = 'header__notifications-panel--active'
+  const CLASS_CLOSE = 'header__notifications-close'
+
   export default {
     name: 'app-header',
     data () {
@@ -61,24 +65,24 @@
         let headerNotificationsPanel = this.$refs.notificationsPanel
         let headerNotifications = this.$refs.headerNotifications
         if (this.$refs.notificationsList.children.length === 0) {
-          headerNotificationsPanel.classList.remove('header__notifications-panel--active')
-          headerNotifications.classList.remove('header__notifications--present')
+          headerNotificationsPanel.classList.remove(CLASS_ACTIVE)
+          headerNotifications.classList.remove(CLASS_PRESENT)
         }
       },
       showNotifications () {
         let headerNotificationsPanel = this.$refs.notificationsPanel
         let headerNotifications = this.$refs.headerNotifications
 
-        if (!headerNotifications.classList.contains('header__notifications--present')) {
+        if (!headerNotifications.classList.contains(CLASS_PRESENT)) {
           return false
         }
 
-        headerNotificationsPanel.classList.toggle('header__notifications-panel--active')
+        headerNotificationsPanel.classList.toggle(CLASS_ACTIVE)
       },
       hideNotifications () {
         let target = event.target
         while (target !== this) {
-          if (target.classList.contains('header__notifications-close')) {
+          if (target.classList.contains(CLASS_CLOSE)) {
             target.parentNode.parentNode.removeChild(target.parentNode)
             this.checkHeaderNotifications()
             return false

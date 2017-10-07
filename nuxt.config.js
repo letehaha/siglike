@@ -10,7 +10,7 @@ const sassResourcesLoader = {
   loader: 'sass-resources-loader',
   options: {
     resources: [
-      resolve(__dirname, 'assets/main.sass')
+      resolve(__dirname, 'assets/sass/additional.sass')
     ]
   }
 }
@@ -49,7 +49,7 @@ module.exports = {
       })
     }
   },
-  css: ['~assets/main.sass'],
+  css: ['~assets/sass/additional.sass'],
   router: {
     linkActiveClass: 'global-active-link',
     linkExactActiveClass: 'global-active-link'
