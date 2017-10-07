@@ -12,7 +12,7 @@
         | Physician
 
     nav.sidebar__nav
-      nuxt-link.sidebar__link.sidebar__nav-link(v-for='link in links', :to='link.href')
+      nuxt-link.sidebar__link.sidebar__nav-link(v-for='link in links', :to='link.href', :key='link.href')
         .sidebar__nav-link-icon
           <Icon :name='link.icon_name'></Icon>
 
