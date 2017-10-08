@@ -134,10 +134,7 @@
       height: 100%
 
   .header__search-field
-    padding: 8px 20px 8px 40px
-    border-radius: 30px
-    border: 1px solid #ccc
-    color: $text-color
+    @extend %input
     +font-smoothing
 
   .header__notifications
