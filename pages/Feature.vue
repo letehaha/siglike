@@ -55,5 +55,9 @@
     width: 350px
     height: 60px
     @extend %addons-btn
+    font-size: 18px
+    font-weight: 600
+    letter-spacing: 1px
+    box-shadow: 0 16px 55px 8px rgba($light-green, .4)
 
 </style>
