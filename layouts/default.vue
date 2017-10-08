@@ -7,7 +7,7 @@
         <app-header></app-header>
         
         <div class="content">
-          <nuxt/>      
+          <nuxt/>
         </div>
       </div>
     </section>
