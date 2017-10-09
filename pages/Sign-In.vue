@@ -29,8 +29,8 @@
           
           input(type='password', placeholder='Password', ref='passwordField')
 
-        button.sign-in__note.sign-in__note--btn-reset
-          | Forget Password?
+        a.sign-in__note(href='forgowpassword')
+          | Forgot Password?
 
         button.sign-in__form-submit(type='submit')
           | Sign In
@@ -88,11 +88,11 @@
     padding: 25px 100px
     max-width: 600px
     margin: 0 auto
+    text-align: center
   
   .sign-in__title
     color: $text-color
     text-transform: uppercase
-    text-align: center
     margin-bottom: 25px
   
   .sign-in__form-field
@@ -135,13 +135,6 @@
   .sign-in__note
     font-size: 14px
     color: $text-color
-    text-align: center
-  
-  .sign-in__note--btn-reset
-    display: block
-    margin: 0 auto
-    border: none
-    background-color: transparent 
 
   .sign-in__link
     color: $light-green
