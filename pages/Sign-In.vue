@@ -29,7 +29,7 @@
           
           input(type='password', placeholder='Password', ref='passwordField')
 
-        a.sign-in__note(href='forgowpassword')
+        a.sign-in__note(href='forgotpassword')
           | Forgot Password?
 
         button.sign-in__form-submit(type='submit')
