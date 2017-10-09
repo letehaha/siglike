@@ -26,11 +26,16 @@
           
           input(type='password', placeholder='Password', ref='passwordField')
 
+<<<<<<< HEAD
           .sign-in__form-field-icon
             <Icon name='password'></Icon>
 
         p.sign-in__note
           | Forget Password?
+=======
+        a.sign-in__note(href='forgotpassword')
+          | Forgot Password?
+>>>>>>> master
 
         button.sign-in__form-submit(type='submit')
           | Sign In
@@ -42,7 +47,6 @@
           | Sign Up
 
 </template>
-
 
 <script>
   import Icon from '~/components/Icon'
@@ -89,11 +93,11 @@
     padding: 25px 100px
     max-width: 600px
     margin: 0 auto
+    text-align: center
   
   .sign-in__title
     color: $text-color
     text-transform: uppercase
-    text-align: center
     margin-bottom: 25px
   
   .sign-in__form-field
@@ -124,6 +128,7 @@
     left: inherit
     right: -30px
     cursor: pointer
+    user-select: none
 
   .sign-in__form-submit
     @extend %addons-btn
@@ -135,8 +140,7 @@
   .sign-in__note
     font-size: 14px
     color: $text-color
-    text-align: center
-  
+
   .sign-in__link
     color: $light-green
 
