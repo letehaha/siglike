@@ -25,17 +25,12 @@
             </template>
           
           input(type='password', placeholder='Password', ref='passwordField')
-
-<<<<<<< HEAD
+          
           .sign-in__form-field-icon
             <Icon name='password'></Icon>
 
-        p.sign-in__note
-          | Forget Password?
-=======
         a.sign-in__note(href='forgotpassword')
           | Forgot Password?
->>>>>>> master
 
         button.sign-in__form-submit(type='submit')
           | Sign In
