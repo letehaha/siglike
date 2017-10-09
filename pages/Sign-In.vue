@@ -10,15 +10,12 @@
 
       form.sign-in__form
         .sign-in__form-field
+          input(type='tel', placeholder='Mobile Number')
+          
           .sign-in__form-field-icon
             <Icon name='mobile'></Icon>
-          
-          input(type='tel', placeholder='Mobile Number')
         
         .sign-in__form-field
-          .sign-in__form-field-icon
-            <Icon name='password'></Icon>
-
           .sign-in__form-field-icon.sign-in__form-field-icon--password(@click='changePasswordVisibility')
             <template v-if='password_visibility'>
               <Icon name='show'></Icon>
@@ -28,6 +25,9 @@
             </template>
           
           input(type='password', placeholder='Password', ref='passwordField')
+          
+          .sign-in__form-field-icon
+            <Icon name='password'></Icon>
 
         a.sign-in__note(href='forgotpassword')
           | Forgot Password?
