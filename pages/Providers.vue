@@ -8,12 +8,12 @@
             input.heal-provider__item-check-field(type='checkbox')
             .heal-provider__item-check-style(v-on:click='selectProvider')
               .heal-provider__item-check-style-icon
-                <Icon name='check'></Icon>
+                <icon name='check'></icon>
 
           .heal-provider__item-photo(v-on:click='unSelectProvider')
             .heal-provider__item-photo-mask
               .heal-provider__item-photo-mask-icon
-                <Icon name='check'></Icon>
+                <icon name='check'></icon>
             
             img.heal-provider__item-photo-img(:src="`img/${item.photo}`", :alt='item.name')
 
@@ -26,7 +26,7 @@
 
             .heal-provider__item-location
               .heal-provider__item-location-icon
-                <Icon name='place'></Icon>
+                <icon name='place'></icon>
               
               | {{ item.location }}
 

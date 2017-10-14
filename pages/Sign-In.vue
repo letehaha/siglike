@@ -2,7 +2,7 @@
   
   .sign-in
     .sign-in__logotype
-      <Icon name='logotype'></Icon>
+      <icon name='logotype'></icon>
     
     .sign-in__frame
       h3.sign-in__title
@@ -13,21 +13,21 @@
           input(type='tel', placeholder='Mobile Number')
           
           .sign-in__form-field-icon
-            <Icon name='mobile'></Icon>
+            <icon name='mobile'></icon>
         
         .sign-in__form-field
           .sign-in__form-field-icon.sign-in__form-field-icon--password(@click='changePasswordVisibility')
             <template v-if='password_visibility'>
-              <Icon name='show'></Icon>
+              <icon name='show'></icon>
             </template>
             <template v-else>
-              <Icon name='hide'></Icon>
+              <icon name='hide'></icon>
             </template>
           
           input(type='password', placeholder='Password', ref='passwordField')
           
           .sign-in__form-field-icon
-            <Icon name='password'></Icon>
+            <icon name='password'></icon>
 
         a.sign-in__note(href='forgotpassword')
           | Forgot Password?
@@ -84,16 +84,10 @@
     margin: 0 auto 70px
   
   .sign-in__frame
-    @extend %air
-    padding: 25px 100px
-    max-width: 600px
-    margin: 0 auto
-    text-align: center
+    @extend %popup
   
   .sign-in__title
-    color: $text-color
-    text-transform: uppercase
-    margin-bottom: 25px
+    @extend %popup-title
   
   .sign-in__form-field
     position: relative
@@ -106,7 +100,7 @@
     input[type='tel'],
     input[type='email'],
     input[type='password']
-      @extend %input
+      @extend %field
   
   .sign-in__form-field-icon
     position: absolute

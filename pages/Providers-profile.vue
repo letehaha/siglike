@@ -6,7 +6,7 @@
         header.heal-provide-profile__header
           .heal-provide-profile__info
             nuxt-link.heal-provide-profile__back(to='/providers')
-              <Icon name='arrow_left'></Icon>
+              <icon name='arrow_left'></icon>
 
             .heal-provide-profile__photo
               img.heal-provide-profile__photo-img(src='img/users/user-doctor.jpg', alt='Doctor')
@@ -17,7 +17,7 @@
 
               .heal-provide-profile__bio-role
                 .heal-provide-profile__bio-role-icon
-                  <Icon name='radiologist'></Icon>
+                  <icon name='radiologist'></icon>
                 
                 | Radiologist
 
@@ -55,7 +55,7 @@
                   li.heal-provide-profile__info-elem(v-for='info in item.items')
                     .heal-provide-profile__info-elem-title
                       .heal-provide-profile__info-elem-title-icon
-                        <Icon :name='info.icon'></Icon>
+                        <icon :name='info.icon'></icon>
 
                       | {{ info.title }}
 
@@ -75,7 +75,7 @@
                 ul.heal-provide-profile__reports-list
                   li.heal-provide-profile__reports-item(v-for='folder in provider.report_history.folders')
                     .heal-provide-profile__reports-item-icon
-                      <Icon :name='folder.icon'></Icon>
+                      <icon :name='folder.icon'></icon>
 
                     .heal-provide-profile__reports-item-name
                       | {{ folder.name }}
@@ -90,7 +90,7 @@
                 ul.heal-provide-profile__reports-list
                   li.heal-provide-profile__reports-item(v-for='file in provider.report_history.files')
                     .heal-provide-profile__reports-item-icon
-                      <Icon :name='file.icon'></Icon>
+                      <icon :name='file.icon'></icon>
 
                     .heal-provide-profile__reports-item-name
                       | {{ file.name }}
@@ -104,7 +104,7 @@
 
       button.heal-provide-profile__user-delete(type='button', title='Delete Provider')
         .heal-provide-profile__user-delete-icon
-          <Icon name='basket'></Icon>
+          <icon name='basket'></icon>
 
         | Delete Provider
 

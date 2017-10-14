@@ -14,14 +14,14 @@
     nav.sidebar__nav
       nuxt-link.sidebar__link.sidebar__nav-link(v-for='link in links', :to='link.href', :key='link.href')
         .sidebar__nav-link-icon
-          <Icon :name='link.icon_name'></Icon>
+          <icon :name='link.icon_name'></icon>
 
         | {{ link.name }}
 
     .sidebar__sign-out
       a.sidebar__link(href='#')
         .sidebar__sign-out-link-icon
-          <Icon name='sign_out'></Icon>
+          <icon name='sign_out'></icon>
 
         | Sign Out
 
