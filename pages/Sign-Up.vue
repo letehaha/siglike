@@ -11,6 +11,9 @@
       h2.sign-up__profile
         | Patient
 
+      .sign-up__account-picture
+        img(src='img/users/patient.png', alt='Patient')
+
       form.sign-up__form(v-on:submit.prevent='formSubmit')
         .sign-up__form-field
           input(type='text', placeholder='John Snow')
@@ -123,6 +126,7 @@
     text-transform: uppercase
     color: $light-green
     margin-bottom: 20px
+    font-size: 26px
   
   .sign-up__form-field
     position: relative
@@ -205,5 +209,13 @@
 
   .sign-up__link
     color: $light-green
+  
+  .sign-up__account-picture
+    width: 100%
+    text-align: center
+    margin-bottom: 20px
+    
+    img
+      max-width: 66px
     
 </style>
