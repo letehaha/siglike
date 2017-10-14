@@ -15,25 +15,31 @@
         img(src='img/users/patient.png', alt='Patient')
 
       form.sign-up__form(v-on:submit.prevent='formSubmit')
-        .sign-up__form-field
-          input(type='text', placeholder='John Snow')
+        .sign-up__form-field.validation-required
+          input.sign-up__form-field-input(type='text', placeholder='John Snow')
           
           .sign-up__form-field-icon
             <icon name='my_profile'></icon>
 
-        .sign-up__form-field
-          input(type='tel', placeholder='Mobile Number')
+          <form-error-tooltip message='Please enter correct name'></form-error-tooltip>
+
+        .sign-up__form-field.validation-required
+          input.sign-up__form-field-input(type='tel', placeholder='Mobile Number')
           
           .sign-up__form-field-icon
             <icon name='mobile'></icon>
 
-        .sign-up__form-field
-          input(type='email', placeholder='Email (optional)')
+          <form-error-tooltip message='Please enter correct mobile number'></form-error-tooltip>
+
+        .sign-up__form-field.validation-required
+          input.sign-up__form-field-input(type='email', placeholder='Email (optional)')
           
           .sign-up__form-field-icon
             <icon name='my_profile'></icon>
+
+          <form-error-tooltip message='Please enter correct email'></form-error-tooltip>
         
-        .sign-up__form-field
+        .sign-up__form-field.validation-required
           .sign-up__form-field-icon.sign-up__form-field-icon--password(@click='changePasswordVisibility')
             <template v-if='password_visibility'>
               <icon name='show'></icon>
@@ -42,12 +48,12 @@
               <icon name='hide'></icon>
             </template>
 
-          <form-error-tooltip message='Please enter correct email'></form-error-tooltip>
-          
-          input(type='password', placeholder='Password', ref='passwordField')
+          input.sign-up__form-field-input(type='password', placeholder='Password', ref='passwordField')
           
           .sign-up__form-field-icon
             <icon name='password'></icon>
+          
+          <form-error-tooltip message='Please enter correct passwod'></form-error-tooltip>
 
         label.sign-up__label
           .sign-up__form-field.sign-up__form-field--checkbox(ref='toggleCheckbox')
@@ -67,6 +73,12 @@
   import FormErrorTooltip from '~/components/FormErrorTooltip'
 
   const CLASS_CHECKED = 'sign-up__form-field--checkbox-checked'
+  const CLASS_REQUIRED = 'validation-required'
+  const CLASS_VALIDATION = 'validation-error'
+
+  function HTMLCollectionToArray (array) {
+    return Array.prototype.slice.call(array)
+  }
 
   export default {
     name: 'signup-page',
@@ -90,11 +102,28 @@
         }
       },
       toggleCheckbox (element) {
-        console.log(this.$refs.toggleCheckbox)
         this.$refs.toggleCheckbox.classList.toggle(CLASS_CHECKED)
       },
       formValidate () {
+        let form = event.target
+        let formItems = HTMLCollectionToArray(form.getElementsByClassName(CLASS_REQUIRED))
 
+        formItems.forEach(function (item, i) {
+          let input = item.querySelector('input')
+          let target = input
+          while (true) {
+            if (target.classList.contains(CLASS_REQUIRED)) {
+              if (input.value === '') {
+                target.classList.add(CLASS_VALIDATION)
+              } else {
+                target.classList.remove(CLASS_VALIDATION)
+              }
+              return false
+            }
+
+            target = target.parentNode
+          }
+        })
       },
       formSubmit () {
         this.formValidate()
@@ -135,11 +164,8 @@
     &:not(:last-child)
       margin-bottom: 15px
     
-    input[type='text'],
-    input[type='tel'],
-    input[type='email'],
-    input[type='password']
-      @extend %field
+  .sign-up__form-field-input
+    @extend %field
   
   .sign-up__form-field--checkbox
     width: 17px

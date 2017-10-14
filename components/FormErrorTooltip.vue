@@ -53,6 +53,7 @@
     position: absolute
     top: calc(100% + 5px)
     right: 7px
+    z-index: 1 
     opacity: 0
     visibility: hidden
     transition: opacity .25s ease-out, visibility .25s ease-out, top .3s ease-out
