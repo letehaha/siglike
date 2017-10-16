@@ -3,7 +3,7 @@
   section.about
     .about__wrapper
       .about__logotype
-        <Icon name='logotype'></Icon>
+        <icon name='logotype'></icon>
 
       .about__descr
         p 

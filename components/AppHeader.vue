@@ -3,19 +3,19 @@
   header.header
     .header__wrapper
       nuxt-link.logotype(to='/')
-        <Icon name='logotype'></Icon>
+        <icon name='logotype'></icon>
 
       .header__search
         form.header__search-form
           .header__search-form-icon
-            <Icon name='search'></Icon>
+            <icon name='search'></icon>
           
           input.header__search-field(type='text', placeholder='Search')
           button.header__search-submit(type='submit', title='Search')
       
       .header__notifications.header__notifications--present(ref='headerNotifications')
         button.header__notifications-btn#js-header__notifications-btn(title='Show Notifications', v-on:click='showNotifications')
-          <Icon name='notifications'></Icon>
+          <icon name='notifications'></icon>
         
         .header__notifications-panel(ref='notificationsPanel')
           ul.header__notifications-list(ref='notificationsList')
@@ -30,7 +30,7 @@
                 | {{ item.action }}.
               
               button.header__notifications-close(type='button', title='Delete', v-on:click='hideNotifications')
-                <Icon name='close'></Icon>
+                <icon name='close'></icon>
 
           .header__notifications-footer
             | Don't have any notification
@@ -134,7 +134,7 @@
       height: 100%
 
   .header__search-field
-    @extend %input
+    @extend %field
     +font-smoothing
 
   .header__notifications

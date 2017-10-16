@@ -1,0 +1,21 @@
+%field
+  width: 100%
+  padding: 13px 20px 13px 40px
+  border-radius: 30px
+  border: 1px solid #ccc
+  color: $text-color
+  font-size: 16px
+  transition: box-shadow .15s ease-out
+  
+  .validation-error &
+    border-color: $error-color
+    
+    & + [class*='-icon'],
+    &:focus + [class*='-icon']
+      color: $error-color
+  
+  &:focus
+    box-shadow: 0 7px 27px -2px rgba(0,0,0, .1)
+    
+    & + [class*='-icon']
+      color: $light-green
