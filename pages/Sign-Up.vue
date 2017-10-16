@@ -14,9 +14,9 @@
       .sign-up__account-picture
         img(src='img/users/patient.png', alt='Patient')
 
-      form.sign-up__form(v-on:submit.prevent='formSubmit')
+      form.sign-up__form(v-on:submit.prevent='formSubmit', data-vv-scope='formPatient')
         .sign-up__form-field.validation-required
-          input.sign-up__form-field-input(type='text', placeholder='John Snow')
+          input.sign-up__form-field-input(type='text', placeholder='John Snow', name='name')
           
           .sign-up__form-field-icon
             <icon name='my_profile'></icon>
@@ -32,12 +32,17 @@
           <form-error-tooltip message='Please enter correct mobile number'></form-error-tooltip>
 
         .sign-up__form-field.validation-required
-          input.sign-up__form-field-input(type='email', placeholder='Email (optional)')
+          input.sign-up__form-field-input(v-validate="'required|email'",
+                                         v-model='email_value',
+                                         name='email',
+                                         type='email',
+                                         placeholder='Email (optional)',
+                                         :rules="(!errors.first('email')) ? [true] : [errors.first('email')]")
           
           .sign-up__form-field-icon
             <icon name='my_profile'></icon>
 
-          <form-error-tooltip message='Please enter correct email'></form-error-tooltip>
+          <form-error-tooltip :message="errors.first('formPatient.email')"></form-error-tooltip>
         
         .sign-up__form-field.validation-required
           .sign-up__form-field-icon.sign-up__form-field-icon--password(@click='changePasswordVisibility')
@@ -75,6 +80,7 @@
   const CLASS_CHECKED = 'sign-up__form-field--checkbox-checked'
   const CLASS_REQUIRED = 'validation-required'
   const CLASS_VALIDATION = 'validation-error'
+  const CLASS_FIELD_VALIDATION_ERROR = 'sign-up__form-field-input--invalid'
 
   function HTMLCollectionToArray (array) {
     return Array.prototype.slice.call(array)
@@ -86,7 +92,26 @@
     components: { Icon, FormErrorTooltip },
     data () {
       return {
-        password_visibility: true
+        password_visibility: true,
+        field_validation_error: CLASS_FIELD_VALIDATION_ERROR,
+        email_value: ''
+      }
+    },
+    watch: { // TODO: fix it
+      'email_value': function () {
+        let _this = event.target
+        let target = _this
+        while (true) {
+          if (target.classList.contains(CLASS_REQUIRED)) {
+            if (_this.getAttribute('aria-invalid') === 'false') {
+              target.classList.remove(CLASS_VALIDATION)
+            } else {
+              target.classList.add(CLASS_VALIDATION)
+            }
+            return false
+          }
+          target = target.parentNode
+        }
       }
     },
     methods: {
@@ -113,7 +138,7 @@
           let target = input
           while (true) {
             if (target.classList.contains(CLASS_REQUIRED)) {
-              if (input.value === '') {
+              if (input.classList.contains(CLASS_FIELD_VALIDATION_ERROR)) {
                 target.classList.add(CLASS_VALIDATION)
               } else {
                 target.classList.remove(CLASS_VALIDATION)
@@ -126,7 +151,7 @@
         })
       },
       formSubmit () {
-        this.formValidate()
+        // this.formValidate()
       }
     }
   }

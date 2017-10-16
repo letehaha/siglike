@@ -53,5 +53,8 @@ module.exports = {
   router: {
     linkActiveClass: 'global-active-link',
     linkExactActiveClass: 'global-active-link'
-  }
+  },
+  plugins: [
+    { src: '~plugins/vee-validate.js', ssr: true }
+  ]
 }
