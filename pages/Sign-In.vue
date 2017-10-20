@@ -1,7 +1,7 @@
 <template lang="pug">
   
   .sign-in
-    .sign-in__logotype
+    nuxt-link.sign-in__logotype(to='/')
       <icon name='logotype'></icon>
     
     .sign-in__frame
@@ -82,6 +82,7 @@
     width: 150px
     color: $light-green
     margin: 0 auto 70px
+    display: block
   
   .sign-in__frame
     @extend %popup

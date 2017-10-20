@@ -1,7 +1,7 @@
 <template lang="pug">
   
   .sign-up
-    .sign-up__logotype
+    nuxt-link.sign-up__logotype(to='/')
       <icon name='logotype'></icon>
     
     .sign-up__frame
@@ -105,7 +105,6 @@
 
         nuxt-link.sign-up__link(to='/sign-in')
           | Sign In
-      
 
 </template>
 
@@ -241,6 +240,7 @@
     width: 150px
     color: $light-green
     margin: 0 auto 70px
+    display: block
   
   .sign-up__frame
     @extend %popup
