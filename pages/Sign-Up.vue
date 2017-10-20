@@ -97,6 +97,9 @@
           button.sign-up__form-submit(type='submit', :data-type='data_type', :disabled='formValid === false')
             | Sign Up
 
+        .sign-up__back(@click='backToChoice')
+          <icon name='arrow_left'></icon>
+
       p.sign-up__note
         | Already have an account? 
 
@@ -219,6 +222,9 @@
       },
       formSubmit () {
         this.formValidate()
+      },
+      backToChoice () {
+        this.$data.nextStep = false
       }
     }
   }
@@ -238,6 +244,7 @@
   
   .sign-up__frame
     @extend %popup
+    position: relative
   
   .sign-up__step
     margin-bottom: 25px
@@ -418,5 +425,17 @@
 
   .sign-up__link
     @extend %popup__link
+  
+  .sign-up__back
+    position: absolute
+    top: 20px
+    left: 20px
+    width: 20px
+    height: 25px
+    cursor: pointer
+    
+    svg
+      width: 100%
+      height: 100%
     
 </style>
