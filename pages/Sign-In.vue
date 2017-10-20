@@ -1,7 +1,7 @@
 <template lang="pug">
   
   .sign-in
-    .sign-in__logotype
+    nuxt-link.sign-in__logotype(to='/')
       <icon name='logotype'></icon>
     
     .sign-in__frame
@@ -82,12 +82,13 @@
     width: 150px
     color: $light-green
     margin: 0 auto 70px
+    display: block
   
   .sign-in__frame
     @extend %popup
   
   .sign-in__title
-    @extend %popup-title
+    @extend %popup__title
   
   .sign-in__form-field
     position: relative
@@ -127,10 +128,9 @@
     margin: 55px auto 25px
 
   .sign-in__note
-    font-size: 14px
-    color: $text-color
+    @extend %popup__note
 
   .sign-in__link
-    color: $light-green
+    @extend %popup__link
 
 </style>

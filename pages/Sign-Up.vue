@@ -1,70 +1,110 @@
 <template lang="pug">
   
   .sign-up
-    .sign-up__logotype
+    nuxt-link.sign-up__logotype(to='/')
       <icon name='logotype'></icon>
     
     .sign-up__frame
-      h3.sign-up__title
-        | Sign Up As
+      .sign-up__step.sign-up__step--type(v-show='!nextStep')
+        h3.sign-up__title
+          | Choose account type
 
-      h2.sign-up__profile
-        | Patient
+        ul.sign-up__type-list
+          li.sign-up__type-item(@click='chooseAccountType', :data-type='account_type.doctor.type')
+            .sign-up__type-picture
+              img(src='img/users/doctor.png', alt='Doctor')
 
-      .sign-up__account-picture
-        img(src='img/users/patient.png', alt='Patient')
+            .sign-up__type-name
+              | Sign up as Patient
 
-      form.sign-up__form(v-on:submit.prevent='formSubmit')
-        .sign-up__form-field.validation-required
-          input.sign-up__form-field-input(type='text', placeholder='John Snow')
-          
-          .sign-up__form-field-icon
-            <icon name='my_profile'></icon>
+              span.sign-up__type-name-description
+                | (Doctor, Pathology, Radiology etc.)
 
-          <form-error-tooltip message='Please enter correct name'></form-error-tooltip>
-
-        .sign-up__form-field.validation-required
-          input.sign-up__form-field-input(type='tel', placeholder='Mobile Number')
-          
-          .sign-up__form-field-icon
-            <icon name='mobile'></icon>
-
-          <form-error-tooltip message='Please enter correct mobile number'></form-error-tooltip>
-
-        .sign-up__form-field.validation-required
-          input.sign-up__form-field-input(type='email', placeholder='Email (optional)')
-          
-          .sign-up__form-field-icon
-            <icon name='my_profile'></icon>
-
-          <form-error-tooltip message='Please enter correct email'></form-error-tooltip>
-        
-        .sign-up__form-field.validation-required
-          .sign-up__form-field-icon.sign-up__form-field-icon--password(@click='changePasswordVisibility')
-            <template v-if='password_visibility'>
-              <icon name='show'></icon>
-            </template>
-            <template v-else>
-              <icon name='hide'></icon>
-            </template>
-
-          input.sign-up__form-field-input(type='password', placeholder='Password', ref='passwordField')
-          
-          .sign-up__form-field-icon
-            <icon name='password'></icon>
-          
-          <form-error-tooltip message='Please enter correct passwod'></form-error-tooltip>
-
-        label.sign-up__label
-          .sign-up__form-field.sign-up__form-field--checkbox(ref='toggleCheckbox')
-            input(type='checkbox', @change='toggleCheckbox')
-            .sign-up__checkbox
+            .sign-up__type-check
               <icon name='check'></icon>
 
-          | I agree to terms and conditions
+          li.sign-up__type-item(@click='chooseAccountType', :data-type='account_type.patient.type')
+            .sign-up__type-picture
+              img(src='img/users/patient.png', alt='Patient')
 
-        button.sign-up__form-submit(type='submit')
-          | Sign Up
+            .sign-up__type-name
+              | Sign up as Patient
+
+            .sign-up__type-check
+              <icon name='check'></icon>
+
+        button.sign-up__type-submit(type='button', @click='doNextStep', :disabled='canNextStep === false')
+          | Next
+      
+      .sign-up__account(v-show='nextStep')
+        h3.sign-up__title
+          | Sign Up As
+
+        .sign-up__account-name(ref='accountName')
+
+        .sign-up__account-picture
+          img(src='img/users/patient.png', alt='Patient', ref='accountPicture')
+
+        form.sign-up__form(v-on:submit.prevent='formSubmit')
+          .sign-up__form-field.validation-required
+            input.sign-up__form-field-input(type='text', placeholder='John Snow')
+            
+            .sign-up__form-field-icon
+              <icon name='my_profile'></icon>
+
+            <form-error-tooltip message='Please enter correct name'></form-error-tooltip>
+
+          .sign-up__form-field.validation-required
+            input.sign-up__form-field-input(type='tel', placeholder='Mobile Number')
+            
+            .sign-up__form-field-icon
+              <icon name='mobile'></icon>
+
+            <form-error-tooltip message='Please enter correct mobile number'></form-error-tooltip>
+
+          .sign-up__form-field.validation-required
+            input.sign-up__form-field-input(type='email', placeholder='Email (optional)')
+            
+            .sign-up__form-field-icon
+              <icon name='my_profile'></icon>
+
+            <form-error-tooltip message='Please enter correct email'></form-error-tooltip>
+          
+          .sign-up__form-field.validation-required
+            .sign-up__form-field-icon.sign-up__form-field-icon--password(@click='changePasswordVisibility')
+              <template v-if='password_visibility'>
+                <icon name='show'></icon>
+              </template>
+              <template v-else>
+                <icon name='hide'></icon>
+              </template>
+
+            input.sign-up__form-field-input(type='password', placeholder='Password', ref='passwordField')
+            
+            .sign-up__form-field-icon
+              <icon name='password'></icon>
+            
+            <form-error-tooltip message='Please enter correct passwod'></form-error-tooltip>
+
+          label.sign-up__label
+            .sign-up__form-field.sign-up__form-field--checkbox(ref='toggleCheckbox')
+              input(type='checkbox', @change='toggleCheckbox')
+              .sign-up__checkbox
+                <icon name='check'></icon>
+
+            | I agree to terms and conditions
+
+          button.sign-up__form-submit(type='submit', :data-type='data_type', :disabled='formValid === false')
+            | Sign Up
+
+        .sign-up__back(@click='backToChoice')
+          <icon name='arrow_left'></icon>
+
+      p.sign-up__note
+        | Already have an account? 
+
+        nuxt-link.sign-up__link(to='/sign-in')
+          | Sign In
 
 </template>
 
@@ -86,10 +126,64 @@
     components: { Icon, FormErrorTooltip },
     data () {
       return {
-        password_visibility: true
+        password_visibility: true,
+        formValid: false,
+        canNextStep: false,
+        nextStep: false,
+        data_type: null,
+        account_type: {
+          patient: {
+            type: 'patient',
+            title: 'Patient',
+            picture_src: 'img/users/patient.png'
+          },
+          doctor: {
+            type: 'doctor',
+            title: 'Heal Professional',
+            picture_src: 'img/users/doctor.png'
+          }
+        }
       }
     },
     methods: {
+      doNextStep () {
+        this.$data.nextStep = true
+
+        if (this.$data.data_type === this.$data.account_type.patient.type) {
+          this.$refs.accountName.textContent = this.$data.account_type.patient.title
+          this.$refs.accountName.alt = this.$data.account_type.patient.title
+          this.$refs.accountPicture.src = this.$data.account_type.patient.picture_src
+        } else if (this.$data.data_type === this.$data.account_type.doctor.type) {
+          this.$refs.accountName.textContent = this.$data.account_type.doctor.title
+          this.$refs.accountName.alt = this.$data.account_type.doctor.title
+          this.$refs.accountPicture.src = this.$data.account_type.doctor.picture_src
+        }
+      },
+      activeNextStep () {
+        this.$data.canNextStep = true // make 'Next' button not disabled
+      },
+      chooseAccountType (event) {
+        let target = event.target
+
+        while (true) {
+          if (target.classList.contains('sign-up__type-item')) {
+            let targets = HTMLCollectionToArray(document.getElementsByClassName('sign-up__type-item'))
+
+            this.$data.data_type = target.dataset.type
+
+            targets.map(function (elem, index) {
+              elem.classList.remove('sign-up__type-item--checked')
+            })
+
+            this.activeNextStep()
+            target.classList.add('sign-up__type-item--checked')
+
+            return false
+          }
+
+          target = target.parentNode
+        }
+      },
       changeIcon () {
         this.$data.password_visibility = !this.$data.password_visibility
       },
@@ -127,6 +221,9 @@
       },
       formSubmit () {
         this.formValidate()
+      },
+      backToChoice () {
+        this.$data.nextStep = false
       }
     }
   }
@@ -143,15 +240,94 @@
     width: 150px
     color: $light-green
     margin: 0 auto 70px
+    display: block
   
   .sign-up__frame
     @extend %popup
+    position: relative
   
+  .sign-up__step
+    margin-bottom: 25px
+  
+  .sign-up__type-list
+    display: flex
+    justify-content: space-between
+    margin-bottom: 75px
+  
+  .sign-up__type
+    width: 100%
+  
+  .sign-up__type-item
+    width: 220px
+    background-color: #fff
+    border: 1px solid $light-grey
+    border-radius: 10px
+    padding: 15px 10px 20px
+    cursor: pointer
+    position: relative
+    transition: box-shadow .3s ease-out
+    
+    &:hover,
+    &.sign-up__type-item--checked
+      box-shadow: 0 9px 46px -6px rgba(0, 0, 0, .1)
+  
+  .sign-up__type-picture
+    width: 70px
+    height: 75px
+    margin: auto auto 10px
+    
+    img
+      max-widht: 100%
+      height: 100%
+      margin: auto
+  
+  .sign-up__type-name
+    font-size: 14px
+    height: 36px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    text-align: center
+  
+  .sign-up__type-name-description
+    font-size: 12px
+  
+  .sign-up__type-check
+    width: 34px
+    height: 34px
+    position: absolute
+    bottom: -17px
+    left: calc(50% - 17px)
+    border-radius: 50%
+    background-color: $light-green
+    color: #fff
+    opacity: 0
+    visibility: hidden
+    transition: opacity .15s ease-out, visibility .15s ease-out
+    
+    .sign-up__type-item--checked &
+      opacity: 1
+      visibility: visible
+    
+    svg
+      width: 20px
+      height: 20px
+      margin: 7px
+  
+  .sign-up__type-submit
+    @extend %addons-btn
+    height: 45px
+    width: 300px
+    font-size: 16px
+    letter-spacing: 1px
+
   .sign-up__title
-    @extend %popup-title
-    margin-bottom: 10px
+    @extend %popup__title
+    font-size: 16px 
+    margin-bottom: 30px
   
-  .sign-up__profile
+  .sign-up__account-name
     text-transform: uppercase
     color: $light-green
     margin-bottom: 20px
@@ -243,5 +419,23 @@
     
     img
       max-width: 66px
+  
+  .sign-up__note
+    @extend %popup__note
+
+  .sign-up__link
+    @extend %popup__link
+  
+  .sign-up__back
+    position: absolute
+    top: 20px
+    left: 20px
+    width: 20px
+    height: 25px
+    cursor: pointer
+    
+    svg
+      width: 100%
+      height: 100%
     
 </style>
