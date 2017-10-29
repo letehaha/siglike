@@ -1,8 +1,7 @@
 <template lang="pug">
   
   .sign-in
-    nuxt-link.sign-in__logotype(to='/')
-      <icon name='logotype'></icon>
+    <logotype class-name='sign-in__logotype'></logotype>
     
     .sign-in__frame
       h3.sign-in__title
@@ -45,11 +44,12 @@
 
 <script>
   import Icon from '~/components/Icon'
+  import Logotype from '~/components/Logotype'
 
   export default {
     name: 'signin-page',
     layout: 'clean',
-    components: { Icon },
+    components: { Icon, Logotype },
     data () {
       return {
         password_visibility: true
@@ -80,7 +80,6 @@
   
   .sign-in__logotype
     width: 150px
-    color: $light-green
     margin: 0 auto 70px
     display: block
   
