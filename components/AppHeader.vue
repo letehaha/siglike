@@ -39,14 +39,6 @@
   import Icon from './Icon'
   import Logotype from './Logotype'
 
-  let notifications = [
-    { photo: 'users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
-    { photo: 'users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
-    { photo: 'users/user-doctor.jpg', href: '#', author: 'Kadamb Diagonitics', action: 'deleted his profile.' },
-    { photo: 'users/user-doctor.jpg', href: '#', author: 'Kadamb Diagonitics', action: 'viewed your profile.' },
-    { photo: 'users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'type an message.' }
-  ]
-
   const CLASS_PRESENT = 'header__notifications--present'
   const CLASS_ACTIVE = 'header__notifications-panel--active'
   const CLASS_CLOSE = 'header__notifications-close'
@@ -55,7 +47,7 @@
     name: 'app-header',
     data () {
       return {
-        notifications: notifications
+        notifications: this.$store.state.notifications.notifications
       }
     },
     components: { Icon, Logotype },
