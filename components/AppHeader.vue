@@ -2,8 +2,7 @@
   
   header.header
     .header__wrapper
-      nuxt-link.logotype(to='/')
-        <icon name='logotype'></icon>
+      <logotype class-name='header__logotype'></logotype>
 
       .header__search
         form.header__search-form
@@ -11,7 +10,6 @@
             <icon name='search'></icon>
           
           input.header__search-field(type='text', placeholder='Search')
-          button.header__search-submit(type='submit', title='Search')
       
       .header__notifications.header__notifications--present(ref='headerNotifications')
         button.header__notifications-btn#js-header__notifications-btn(title='Show Notifications', v-on:click='showNotifications')
@@ -39,6 +37,7 @@
 
 <script>
   import Icon from './Icon'
+  import Logotype from './Logotype'
 
   let notifications = [
     { photo: 'users/user-doctor.jpg', href: '#', author: 'Dr. Shiley', action: 'send a file.' },
@@ -59,7 +58,7 @@
         notifications: notifications
       }
     },
-    components: { Icon },
+    components: { Icon, Logotype },
     methods: {
       checkHeaderNotifications () {
         let headerNotificationsPanel = this.$refs.notificationsPanel
@@ -97,24 +96,16 @@
 
 <style lang="sass"> 
   // TODO: fix excess rules
-  .header
-    height: 77px
+  
+  .header__logotype
+    height: 45px
+    margin-right: auto
 
   .header__wrapper
     display: flex
     align-items: center
     padding: 15px 45px
     background-color: #fff
-
-  .logotype
-    margin-right: auto
-    color: $light-green
-    height: 45px
-    font-size: 40px
-
-    svg
-      height: 100%
-      width: auto
 
   .header__notifications
     margin-left: 40px
@@ -125,7 +116,7 @@
   .header__search-form-icon
     position: absolute
     left: 10px
-    top: 10px
+    top: calc(50% - 9px)
     width: 18px
     height: 18px
 

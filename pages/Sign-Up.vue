@@ -1,8 +1,7 @@
 <template lang="pug">
   
   .sign-up
-    nuxt-link.sign-up__logotype(to='/')
-      <icon name='logotype'></icon>
+    <logotype class-name='sign-up__logotype'></logotype>
     
     .sign-up__frame
       .sign-up__step.sign-up__step--type(v-show='!nextStep')
@@ -111,6 +110,7 @@
 <script>
   import Icon from '~/components/Icon'
   import FormErrorTooltip from '~/components/FormErrorTooltip'
+  import Logotype from '~/components/Logotype'
 
   const CLASS_CHECKED = 'sign-up__form-field--checkbox-checked'
   const CLASS_REQUIRED = 'validation-required'
@@ -123,7 +123,7 @@
   export default {
     name: 'signup-page',
     layout: 'clean',
-    components: { Icon, FormErrorTooltip },
+    components: { Icon, FormErrorTooltip, Logotype },
     data () {
       return {
         password_visibility: true,
@@ -238,7 +238,6 @@
   
   .sign-up__logotype
     width: 150px
-    color: $light-green
     margin: 0 auto 70px
     display: block
   
