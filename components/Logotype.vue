@@ -16,7 +16,6 @@
 </script>
 
 <style lang="sass"> 
-  // TODO: fix excess rules
 
   .logotype
     color: $light-green
