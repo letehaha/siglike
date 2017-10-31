@@ -9,7 +9,7 @@
               <icon name='arrow_left'></icon>
 
             .heal-provide-profile__photo
-              img.heal-provide-profile__photo-img(src='img/users/user-doctor.jpg', alt='Doctor')
+              img.heal-provide-profile__photo-img(:src="'img/' + provider.user_avatar", :alt="provider.name + ' ' + provider.s_name")
             
             .heal-provide-profile__bio
               .heal-provide-profile__bio-name
