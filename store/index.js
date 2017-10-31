@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 
 import { notifications } from './modules/notifications.js'
 import { links } from './modules/sidebarLinks.js'
+import { providers } from './modules/provider.js'
 
 const createStore = () => {
   return new Vuex.Store({
@@ -13,7 +14,8 @@ const createStore = () => {
     },
     modules: {
       notifications: notifications,
-      sidebarLinks: links
+      sidebarLinks: links,
+      providers: providers
     }
   })
 }

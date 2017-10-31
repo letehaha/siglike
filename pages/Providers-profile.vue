@@ -13,13 +13,13 @@
             
             .heal-provide-profile__bio
               .heal-provide-profile__bio-name
-                | Dr. Williber
+                | {{ provider.reference }} {{ provider.s_name }}
 
               .heal-provide-profile__bio-role
                 .heal-provide-profile__bio-role-icon
                   <icon name='radiologist'></icon>
                 
-                | Radiologist
+                | {{ provider.profession }}
 
             ul.heal-provide-profile__files-info
               li.heal-provide-profile__files-item
@@ -117,83 +117,6 @@
     return Array.prototype.slice.call(array)
   }
 
-  let provider = {
-    user_info: {
-      basic_info: {
-        title: 'Basic Info',
-        items: [
-          { icon: 'my_profile', title: 'Facility Name', info: 'Sadbhav Hospital' }
-        ],
-        note: {
-          status: false,
-          message: ''
-        }
-      },
-      experiance: {
-        title: 'Work and Education',
-        items: [
-          { icon: 'my_profile', title: 'Education', info: 'MBBS , MD (Medicine)' },
-          { icon: 'my_profile', title: 'Specialty', info: 'Radiologist' },
-          { icon: 'my_profile', title: 'Experiance', info: '30 Year' }
-        ],
-        note: {
-          status: false,
-          message: ''
-        }
-      },
-      address: {
-        title: 'Address',
-        items: [
-          { icon: 'my_profile', title: 'Address', info: '156 – O Block' },
-          { icon: 'my_profile', title: 'Area', info: 'Patel State' },
-          { icon: 'my_profile', title: 'City', info: 'Naranpura' }
-        ],
-        note: {
-          status: false,
-          message: ''
-        }
-      },
-      persons: {
-        title: 'Contact Persons',
-        items: [
-          { icon: 'my_profile', title: 'Reception', info: '+91 021 1234567' }
-        ],
-        note: {
-          status: false,
-          message: ''
-        }
-      },
-      contact: {
-        title: 'Personal Contact',
-        items: [
-          { icon: 'my_profile', title: 'Dr. Williber', info: '+91 021 1234567' }
-        ],
-        note: {
-          status: true,
-          message: 'Call in emergency only'
-        }
-      }
-    },
-    report_history: {
-      files: [
-        { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
-        { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
-        { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
-        { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' }
-      ],
-      folders: [
-        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' },
-        { icon: 'folder', name: 'Blood Pressure Reports', date: '19/07/17 , 9:38 PM' }
-      ]
-    }
-  }
-
   const CLASS_ACTIVE = 'heal-provide-profile__item--active'
   const CLASS_VISIBLE = 'heal-provide-profile__body-content--visible'
 
@@ -201,7 +124,7 @@
     name: 'providers-profile-page',
     data () {
       return {
-        provider: provider
+        id: 1
       }
     },
     components: { Icon },
@@ -262,6 +185,11 @@
       this.$nextTick(function () {
         this.showCurrentTab()
       })
+    },
+    computed: {
+      provider () {
+        return this.$store.state.providers.providers[this.$data.id]
+      }
     }
   }
 </script>
@@ -490,8 +418,8 @@
   .heal-provide-profile__body-content
     display: none
     
-  .heal-provide-profile__body-content--visible
-    display: block
+    &.heal-provide-profile__body-content--visible
+      display: block
 
   .heal-provide-profile__reports
     text-align: left
