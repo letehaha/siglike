@@ -15,14 +15,15 @@
               .heal-provider__item-photo-mask-icon
                 <icon name='check'></icon>
             
-            img.heal-provider__item-photo-img(:src="`img/${item.photo}`", :alt='item.name')
+            img.heal-provider__item-photo-img(:src="'img/' + item.user_avatar",
+                                              :alt="item.name + ' ' + item.s_name")
 
           .heal-provider__item-info
             nuxt-link.heal-provider__item-name(to='/providers-profile')
-              | {{ item.name }}
+              | {{ item.name }}  {{ item.s_name }} 
 
             .heal-provider__item-bio
-              | {{ item.bio }}
+              | {{ item.profession }}
 
             .heal-provider__item-location
               .heal-provider__item-location-icon
@@ -77,14 +78,6 @@
 <script>
   import Icon from '~/components/Icon'
 
-  let providers = [
-    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
-    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
-    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
-    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' },
-    { photo: 'users/user-doctor.jpg', name: 'Kadamb Diagonitics', bio: 'Radiology', location: 'Akbarnagar' }
-  ]
-
   const CLASS_ITEM = 'heal-provider__item'
   const CLASS_CHECKED = 'heal-provider__item--checked'
 
@@ -92,7 +85,6 @@
     name: 'providers-page',
     data () {
       return {
-        providers: providers
       }
     },
     components: { Icon },
@@ -124,6 +116,11 @@
 
           target = target.parentNode
         }
+      }
+    },
+    computed: {
+      providers () {
+        return this.$store.state.providers.providers
       }
     }
   }
