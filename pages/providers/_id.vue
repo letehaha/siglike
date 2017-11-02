@@ -8,8 +8,8 @@
             nuxt-link.heal-provide-profile__back(to='/providers')
               <icon name='arrow_left'></icon>
 
-            .heal-provide-profile__photo
-              img.heal-provide-profile__photo-img(:src="'img/' + provider.user_avatar", :alt="provider.name + ' ' + provider.s_name")
+            .heal-provide-profile__photo 
+              img.heal-provide-profile__photo-img(:src="'./img/' + provider.user_avatar", :alt="provider.name + ' ' + provider.s_name")
             
             .heal-provide-profile__bio
               .heal-provide-profile__bio-name
@@ -36,7 +36,7 @@
                 button.heal-provide-profile__files-btn
                   | 113
 
-          .heal-provide-profile__nav(v-on:click='showTab', ref='tabsList')
+          .heal-provide-profile__nav(@click='showTab', ref='tabsList')
             button.heal-provide-profile__item
               | User Info
 
@@ -124,7 +124,6 @@
     name: 'providers-profile-page',
     data () {
       return {
-        id: 1
       }
     },
     components: { Icon },
@@ -188,7 +187,10 @@
     },
     computed: {
       provider () {
-        return this.$store.state.providers.providers[this.$data.id]
+        return this.$store.state.providers.providers[this.id]
+      },
+      id () {
+        return this.$route.params.id
       }
     }
   }
@@ -210,8 +212,8 @@
     @extend %profile-info
 
   .heal-provide-profile__back
-    width: 42px // 22px + 20px
-    height: 65px // 15px + 20px
+    width: 42px
+    height: 65px
     background-color: transparent
     border: none
     font-size: 20px

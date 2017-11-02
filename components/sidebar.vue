@@ -2,7 +2,7 @@
   
   aside.sidebar.sidebar--left
     .sidebar__user
-      nuxt-link.sidebar__user-photo(to='/providers-profile')
+      nuxt-link.sidebar__user-photo(to='/providers')
         img(src='img/users/user-doctor.jpg', alt='Doctor')
 
       .sidebar__user-name

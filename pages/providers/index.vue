@@ -6,11 +6,11 @@
         li.heal-provider__item(v-for='item in providers')
           label.heal-provider__item-check
             input.heal-provider__item-check-field(type='checkbox')
-            .heal-provider__item-check-style(v-on:click='selectProvider')
+            .heal-provider__item-check-style(@click='selectProvider')
               .heal-provider__item-check-style-icon
                 <icon name='check'></icon>
 
-          .heal-provider__item-photo(v-on:click='unSelectProvider')
+          .heal-provider__item-photo(@click='unSelectProvider')
             .heal-provider__item-photo-mask
               .heal-provider__item-photo-mask-icon
                 <icon name='check'></icon>
@@ -19,10 +19,10 @@
                                               :alt="item.name + ' ' + item.s_name")
 
           .heal-provider__item-info
-            nuxt-link.heal-provider__item-name(to='/providers-profile')
-              | {{ item.name }}  {{ item.s_name }} 
+            nuxt-link.heal-provider__item-name(:to="'providers/'+item.id", :id='item.id', @click.native='goToProvider')
+              | {{ item.name + ' ' + item.s_name }}
 
-            .heal-provider__item-bio
+            .heal-provider__item-bio()
               | {{ item.profession }}
 
             .heal-provider__item-location
@@ -116,6 +116,9 @@
 
           target = target.parentNode
         }
+      },
+      goToProvider () {
+        this.$store.commit('changeActiveProvider', { value: parseInt(event.target.parentNode.childNodes[0].dataset.id) })
       }
     },
     computed: {
