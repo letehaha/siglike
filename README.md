@@ -1,6 +1,6 @@
 # siglike
 
-> siglike Nuxt.js project
+> Nuxt.js project
 
 ## Build Setup
 
@@ -8,20 +8,15 @@
 # install dependencies
 $ npm install # Or yarn install
 
-# serve with hot reload at localhost:3333 (you can change localhost in scrips inside package.json file)
+# serve with hot reload at localhost:3000
 $ npm run dev
 
 # build for production and launch server
-$ npm run build
 $ npm start
-
-# generate static project
-$ npm run generate
 ```
 
-## Information about development
-* For inlining icons in html markup need to add svg icon to `static` folder. Also, need to add code of svg to `components/Icon.vue` to `icons` object.
-  
-  Use of this component:<br>
-    * Make 'import' to template<br>
-    * `<Icon name='some_name'></Icon>`, where `name` – name of svg icon in `icons` object
+For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+
+## Backpack
+
+We use [backpack](https://github.com/palmerhq/backpack) to watch and build the application, so you can use the latest ES6 features (module syntax, async/await, etc.).

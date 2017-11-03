@@ -111,6 +111,8 @@
 </template>
 
 <script>
+  import axios from '~/plugins/axios'
+
   import Icon from '~/components/Icon'
 
   function HTMLCollectionToArray (array) {
@@ -120,20 +122,18 @@
   const CLASS_ACTIVE = 'heal-provide-profile__item--active'
   const CLASS_VISIBLE = 'heal-provide-profile__body-content--visible'
 
-  function search (nameKey, myArray) {
-    for (var i = 0; i < myArray.length; i++) {
-      if (myArray[i].id === nameKey) {
-        return myArray[i]
-      }
-    }
-  }
-
   export default {
     name: 'providers-profile-page',
-    data () {
-      return {
-      }
+    async asyncData ({ params, error }) {
+      return axios.get('/api/providers/' + params.id)
+        .then((res) => {
+          return { provider: res.data }
+        })
+        .catch((e) => {
+          error({ statusCode: 404, message: 'Provider not found' })
+        })
     },
+    head () { return { title: this.pageTitle } },
     components: { Icon },
     methods: {
       activeTab () {
@@ -194,8 +194,8 @@
       })
     },
     computed: {
-      provider () {
-        return search(parseInt(this.$route.params.id), this.$store.state.providers.providers)
+      pageTitle: function () {
+        return this.provider.name + ' ' + this.provider.s_name
       }
     }
   }

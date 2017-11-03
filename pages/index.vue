@@ -6,11 +6,10 @@
 </template>
 
 <script>
-export default {
-
-}
+  export default {
+    head () { return { title: 'Siglike' } }
+  }
 </script>
 
 <style>
-
 </style>

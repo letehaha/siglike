@@ -1,6 +1,9 @@
-export const providers = {
-  state: {
-    providers: [
+import { Router } from 'express'
+
+const router = Router()
+
+// Mock Users
+const providers = [
       {
         id: 0,
         name: 'John',
@@ -427,5 +430,28 @@ export const providers = {
         }
       }
     ]
+
+function search (nameKey, myArray) {
+  for (var i = 0; i < myArray.length; i++) {
+    if (myArray[i].id === nameKey) {
+      return myArray[i]
+    }
   }
 }
+
+/* GET providers listing. */
+router.get('/providers', function (req, res, next) {
+  res.json(providers)
+})
+
+/* GET user by ID. */
+router.get('/providers/:id', function (req, res, next) {
+  const id = parseInt(req.params.id)
+  if (id >= 0) {
+    res.json(search(parseInt(id), providers))
+  } else {
+    res.sendStatus(404)
+  }
+})
+
+export default router

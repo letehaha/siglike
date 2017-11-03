@@ -7,7 +7,8 @@
 
 <script>
   export default {
-    name: 'staff-page'
+    name: 'staff-page',
+    head () { return { title: 'Staff' } }
   }
 </script>
 

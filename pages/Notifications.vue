@@ -7,7 +7,8 @@
 
 <script>
   export default {
-    name: 'notifications-page'
+    name: 'notifications-page',
+    head () { return { title: 'Notifications' } }
   }
 </script>
 

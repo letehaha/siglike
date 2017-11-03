@@ -7,7 +7,8 @@
 
 <script>
   export default {
-    name: 'reports-page'
+    name: 'reports-page',
+    head () { return { title: 'Reports' } }
   }
 </script>
 
