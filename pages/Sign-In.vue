@@ -55,6 +55,7 @@
         password_visibility: true
       }
     },
+    head () { return { title: 'Sign In to Siglike!' } },
     methods: {
       changeIcon () {
         this.$data.password_visibility = !this.$data.password_visibility

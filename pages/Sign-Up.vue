@@ -124,6 +124,7 @@
     name: 'signup-page',
     layout: 'clean',
     components: { Icon, FormErrorTooltip, Logotype },
+    head () { return { title: 'Sign Up to Siglike!' } },
     data () {
       return {
         password_visibility: true,

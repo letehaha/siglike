@@ -16,7 +16,8 @@
 
 <script>
   export default {
-    name: 'feature-page'
+    name: 'feature-page',
+    head () { return { title: 'Request Feaure' } }
   }
 </script>
 

@@ -7,7 +7,8 @@
 
 <script>
   export default {
-    name: 'trash-page'
+    name: 'trash-page',
+    head () { return { title: 'Deleted Files' } }
   }
 </script>
 

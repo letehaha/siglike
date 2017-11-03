@@ -90,6 +90,7 @@
       return { providers: data }
     },
     components: { Icon },
+    head () { return { title: 'Providers' } },
     methods: {
       providerToggleCheckbox (element) {
         element.classList.toggle(CLASS_CHECKED)

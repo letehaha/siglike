@@ -7,7 +7,8 @@
 
 <script>
   export default {
-    name: 'profile-page'
+    name: 'profile-page',
+    head () { return { title: 'Your profile' } }
   }
 </script>
 

@@ -7,7 +7,8 @@
 
 <script>
   export default {
-    name: 'patients-page'
+    name: 'patients-page',
+    head () { return { title: 'Patients' } }
   }
 </script>
 

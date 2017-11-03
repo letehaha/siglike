@@ -133,6 +133,7 @@
           error({ statusCode: 404, message: 'Provider not found' })
         })
     },
+    head () { return { title: this.pageTitle } },
     components: { Icon },
     methods: {
       activeTab () {
@@ -191,6 +192,11 @@
       this.$nextTick(function () {
         this.showCurrentTab()
       })
+    },
+    computed: {
+      pageTitle: function () {
+        return this.provider.name + ' ' + this.provider.s_name
+      }
     }
   }
 </script>

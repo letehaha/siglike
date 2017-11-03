@@ -16,20 +16,8 @@
 
   export default {
     name: 'about-page',
-    data () {
-      return {
-        title: 'About Siglike!'
-      }
-    },
     components: { Icon },
-    head () {
-      return {
-        title: this.title,
-        meta: [
-          { hid: 'description', name: 'description', content: 'My custom description' }
-        ]
-      }
-    }
+    head () { return { title: 'About Siglike' } }
   }
 </script>
 
