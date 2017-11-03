@@ -28,9 +28,11 @@ module.exports = {
     ]
   },
   loading: { color: '#65cb30' },
+  css: ['~assets/sass/additional.sass'],
   build: {
+    vendor: ['axios'],
     extend (config, ctx) {
-      if (ctx.dev && ctx.isClient) {
+      if (ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -48,10 +50,5 @@ module.exports = {
         }
       })
     }
-  },
-  css: ['~assets/sass/additional.sass'],
-  router: {
-    linkActiveClass: 'global-active-link',
-    linkExactActiveClass: 'global-active-link'
   }
 }

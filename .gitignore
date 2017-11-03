@@ -10,4 +10,5 @@ npm-debug.log
 # Nuxt generate
 dist
 
-.editorconfig
+# Backpack build
+build
