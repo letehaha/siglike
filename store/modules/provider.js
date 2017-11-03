@@ -1,5 +1,3 @@
-import { CHANGE_ACTIVE_PROVIDER as changeActiveProvider } from '../mutation-types'
-
 export const providers = {
   state: {
     active_provider: null,
@@ -337,9 +335,9 @@ export const providers = {
         }
       },
       {
-        id: 4,
+        id: 5,
         name: 'Alexey',
-        s_name: 'Poper',
+        s_name: 'Alekseevich',
         reference: 'Dr.',
         user_avatar: 'users/user-doctor.jpg',
         profession: 'Radiologist',
@@ -420,10 +418,5 @@ export const providers = {
         }
       }
     ]
-  },
-  mutations: {
-    [changeActiveProvider] (state, payload) {
-      state.active_provider = payload.value
-    }
   }
 }

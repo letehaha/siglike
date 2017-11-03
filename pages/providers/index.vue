@@ -19,7 +19,7 @@
                                               :alt="item.name + ' ' + item.s_name")
 
           .heal-provider__item-info
-            nuxt-link.heal-provider__item-name(:to="'providers/'+item.id", :id='item.id', @click.native='goToProvider')
+            nuxt-link.heal-provider__item-name(:to="'providers/'+item.id", @click.native='goToProvider')
               | {{ item.name + ' ' + item.s_name }}
 
             .heal-provider__item-bio()

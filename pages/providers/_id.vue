@@ -120,6 +120,14 @@
   const CLASS_ACTIVE = 'heal-provide-profile__item--active'
   const CLASS_VISIBLE = 'heal-provide-profile__body-content--visible'
 
+  function search (nameKey, myArray) {
+    for (var i = 0; i < myArray.length; i++) {
+      if (myArray[i].id === nameKey) {
+        return myArray[i]
+      }
+    }
+  }
+
   export default {
     name: 'providers-profile-page',
     data () {
@@ -187,10 +195,7 @@
     },
     computed: {
       provider () {
-        return this.$store.state.providers.providers[this.id]
-      },
-      id () {
-        return this.$route.params.id
+        return search(parseInt(this.$route.params.id), this.$store.state.providers.providers)
       }
     }
   }
