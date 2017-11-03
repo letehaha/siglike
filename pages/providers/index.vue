@@ -19,7 +19,7 @@
                                               :alt="item.name + ' ' + item.s_name")
 
           .heal-provider__item-info
-            nuxt-link.heal-provider__item-name(:to="'providers/'+item.id")
+            nuxt-link.heal-provider__item-name(:to="'providers/' + item.id")
               | {{ item.name + ' ' + item.s_name }}
 
             .heal-provider__item-bio
@@ -38,7 +38,7 @@
     aside.heal-provide-profile__addons
       button.heal-provide-profile__share.js-add-heal-provider(type='button', title='Add heal provider')
         | Add heal provider
-
+      
       .heal-provide-profile__share-inner#js-share
         .heal-provide-profile__share-title
           | Share
@@ -76,6 +76,8 @@
 </template>
 
 <script>
+  import axios from '~/plugins/axios'
+  
   import Icon from '~/components/Icon'
 
   const CLASS_ITEM = 'heal-provider__item'
@@ -83,9 +85,9 @@
 
   export default {
     name: 'providers-page',
-    data () {
-      return {
-      }
+    async asyncData () {
+      let { data } = await axios.get('/api/providers')
+      return { providers: data }
     },
     components: { Icon },
     methods: {
@@ -116,11 +118,6 @@
 
           target = target.parentNode
         }
-      }
-    },
-    computed: {
-      providers () {
-        return this.$store.state.providers.providers
       }
     }
   }
