@@ -19,10 +19,10 @@
                                               :alt="item.name + ' ' + item.s_name")
 
           .heal-provider__item-info
-            nuxt-link.heal-provider__item-name(:to="'providers/'+item.id", @click.native='goToProvider')
+            nuxt-link.heal-provider__item-name(:to="'providers/'+item.id")
               | {{ item.name + ' ' + item.s_name }}
 
-            .heal-provider__item-bio()
+            .heal-provider__item-bio
               | {{ item.profession }}
 
             .heal-provider__item-location
@@ -116,9 +116,6 @@
 
           target = target.parentNode
         }
-      },
-      goToProvider () {
-        this.$store.commit('changeActiveProvider', { value: parseInt(event.target.parentNode.childNodes[0].dataset.id) })
       }
     },
     computed: {

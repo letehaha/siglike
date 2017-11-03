@@ -1,6 +1,5 @@
 export const providers = {
   state: {
-    active_provider: null,
     providers: [
       {
         id: 0,
@@ -67,6 +66,8 @@ export const providers = {
           }
         },
         report_history: {
+          send_files: 67,
+          received_files: 127,
           files: [
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
@@ -150,6 +151,8 @@ export const providers = {
           }
         },
         report_history: {
+          send_files: 57,
+          received_files: 27,
           files: [
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
@@ -233,6 +236,8 @@ export const providers = {
           }
         },
         report_history: {
+          send_files: 117,
+          received_files: 17,
           files: [
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
@@ -316,6 +321,8 @@ export const providers = {
           }
         },
         report_history: {
+          send_files: 47,
+          received_files: 1231,
           files: [
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
@@ -399,6 +406,8 @@ export const providers = {
           }
         },
         report_history: {
+          send_files: 0,
+          received_files: 0,
           files: [
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },
             { icon: 'file', name: 'Dr. Juhaid Doc.', date: '19/07/17 , 9:38 PM' },

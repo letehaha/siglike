@@ -13,7 +13,7 @@
             
             .heal-provide-profile__bio
               .heal-provide-profile__bio-name
-                | {{ provider.reference }} {{ provider.s_name }}
+                | {{ provider.reference + ' ' + provider.s_name }}
 
               .heal-provide-profile__bio-role
                 .heal-provide-profile__bio-role-icon
@@ -27,14 +27,14 @@
                   | Send files
 
                 button.heal-provide-profile__files-btn
-                  | 57
+                  | {{ provider.report_history.send_files }}
 
               li.heal-provide-profile__files-item
                 .heal-provide-profile__files-title
                   | Received files
 
                 button.heal-provide-profile__files-btn
-                  | 113
+                  | {{ provider.report_history.received_files }}
 
           .heal-provide-profile__nav(@click='showTab', ref='tabsList')
             button.heal-provide-profile__item
