@@ -8,12 +8,12 @@
             nuxt-link.heal-provide-profile__back(to='/providers')
               <icon name='arrow_left'></icon>
 
-            .heal-provide-profile__photo
-              img.heal-provide-profile__photo-img(:src="'img/' + provider.user_avatar", :alt="provider.name + ' ' + provider.s_name")
+            .heal-provide-profile__photo 
+              img.heal-provide-profile__photo-img(:src="'./img/' + provider.user_avatar", :alt="provider.name + ' ' + provider.s_name")
             
             .heal-provide-profile__bio
               .heal-provide-profile__bio-name
-                | {{ provider.reference }} {{ provider.s_name }}
+                | {{ provider.reference + ' ' + provider.s_name }}
 
               .heal-provide-profile__bio-role
                 .heal-provide-profile__bio-role-icon
@@ -27,16 +27,16 @@
                   | Send files
 
                 button.heal-provide-profile__files-btn
-                  | 57
+                  | {{ provider.report_history.send_files }}
 
               li.heal-provide-profile__files-item
                 .heal-provide-profile__files-title
                   | Received files
 
                 button.heal-provide-profile__files-btn
-                  | 113
+                  | {{ provider.report_history.received_files }}
 
-          .heal-provide-profile__nav(v-on:click='showTab', ref='tabsList')
+          .heal-provide-profile__nav(@click='showTab', ref='tabsList')
             button.heal-provide-profile__item
               | User Info
 
@@ -120,11 +120,18 @@
   const CLASS_ACTIVE = 'heal-provide-profile__item--active'
   const CLASS_VISIBLE = 'heal-provide-profile__body-content--visible'
 
+  function search (nameKey, myArray) {
+    for (var i = 0; i < myArray.length; i++) {
+      if (myArray[i].id === nameKey) {
+        return myArray[i]
+      }
+    }
+  }
+
   export default {
     name: 'providers-profile-page',
     data () {
       return {
-        id: 1
       }
     },
     components: { Icon },
@@ -188,7 +195,7 @@
     },
     computed: {
       provider () {
-        return this.$store.state.providers.providers[this.$data.id]
+        return search(parseInt(this.$route.params.id), this.$store.state.providers.providers)
       }
     }
   }
@@ -210,8 +217,8 @@
     @extend %profile-info
 
   .heal-provide-profile__back
-    width: 42px // 22px + 20px
-    height: 65px // 15px + 20px
+    width: 42px
+    height: 65px
     background-color: transparent
     border: none
     font-size: 20px

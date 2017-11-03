@@ -12,7 +12,7 @@
           input.header__search-field(type='text', placeholder='Search')
       
       .header__notifications.header__notifications--present(ref='headerNotifications')
-        button.header__notifications-btn#js-header__notifications-btn(title='Show Notifications', v-on:click='showNotifications')
+        button.header__notifications-btn(title='Show Notifications', @click='showNotifications')
           <icon name='notifications'></icon>
         
         .header__notifications-panel(ref='notificationsPanel')
@@ -27,7 +27,7 @@
                 
                 | {{ item.action }}.
               
-              button.header__notifications-close(type='button', title='Delete', v-on:click='hideNotifications')
+              button.header__notifications-close(type='button', title='Delete', @click='hideNotifications')
                 <icon name='close'></icon>
 
           .header__notifications-footer
