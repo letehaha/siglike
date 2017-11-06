@@ -1,5 +1,5 @@
 <template lang="pug">
-  
+
   aside.sidebar.sidebar--left
     .sidebar__user
       nuxt-link.sidebar__user-photo(to='/providers')
@@ -11,6 +11,7 @@
       .sidebar__user-bio
         | Physician
 
+    //- TODO: need to fix problem with '/providers' link when click on this link inside '/provider' page
     nav.sidebar__nav
       nuxt-link.sidebar__link.sidebar__nav-link(v-for='link in links', :to='link.href', :key='link.href')
         .sidebar__nav-link-icon
@@ -93,7 +94,7 @@
 
   .sidebar__nav-link
     border-left: 5px solid transparent
-    
+
     &.global-active-link,
     &:hover
       color: $light-green
