@@ -1,5 +1,5 @@
 <template lang="pug">
-  
+
   .heal-provider
     section.heal-provider__main
       ul.heal-provider__list
@@ -14,7 +14,7 @@
             .heal-provider__item-photo-mask
               .heal-provider__item-photo-mask-icon
                 <icon name='check'></icon>
-            
+
             img.heal-provider__item-photo-img(:src="'img/' + item.user_avatar",
                                               :alt="item.name + ' ' + item.s_name")
 
@@ -28,17 +28,17 @@
             .heal-provider__item-location
               .heal-provider__item-location-icon
                 <icon name='place'></icon>
-              
+
               | {{ item.location }}
 
           .heal-provider__item-share
             button.heal-provider__item-share-button.js-share-open-btn(type='button')
               | Share
-    
+
     aside.heal-provide-profile__addons
       button.heal-provide-profile__share.js-add-heal-provider(type='button', title='Add heal provider')
         | Add heal provider
-      
+
       .heal-provide-profile__share-inner#js-share
         .heal-provide-profile__share-title
           | Share
@@ -62,7 +62,7 @@
 
           .heal-provide-profile__share-copy-field
             input.heal-provide-profile__share-copy-input#js-share-copy-input
-            
+
             button.heal-provide-profile__share-copy-btn#js-share-copy-button(type='button', title='Copy link')
               | copy
 
@@ -77,7 +77,7 @@
 
 <script>
   import axios from '~/plugins/axios'
-  
+
   import Icon from '~/components/Icon'
 
   const CLASS_ITEM = 'heal-provider__item'
@@ -87,8 +87,7 @@
     name: 'providers-page',
     async asyncData () {
       let { data } = await axios.get('/api/providers')
-      data = JSON.parse(data)
-      return { providers: data }
+      return { providers: JSON.parse(data) }
     },
     components: { Icon },
     head () { return { title: 'Providers' } },
@@ -148,7 +147,7 @@
     border: 1px solid $light-grey
     border-radius: 3px
     display: flex
-    
+
     &:not(:nth-child(3n+1))
       margin-left: 10px
 
@@ -194,12 +193,12 @@
       width: 100%
       height: 100%
       display: block
-  
+
   .heal-provider__item-check-style-icon
     opacity: 0
     width: 10px
     height: 10px
-    
+
     .heal-provider__item--checked &
       opacity: 1
 
@@ -236,7 +235,7 @@
       width: 100%
       height: 100%
       margin: auto
-  
+
   .heal-provider__item-photo-mask-icon
     height: 30px
     width: 30px
@@ -260,7 +259,7 @@
   .heal-provider__item-location
     margin-top: 10px
     display: flex
-  
+
   .heal-provider__item-location-icon
     width: 18px
     margin-right: 10px
@@ -364,7 +363,7 @@
     opacity: 0
     visibility: hidden
     transition: .3s ease-out
-    
+
     .heal-provide-profile__share-copy-btn.active &
       opacity: 1
       visibility: visible
@@ -428,7 +427,7 @@
 
   .heal-provide-profile__body-content
     display: none
-    
+
     &.visible
       display: block
 
