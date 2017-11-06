@@ -3,7 +3,7 @@
   .heal-provider
     section.heal-provider__main
       ul.heal-provider__list
-        li.heal-provider__item(v-for='item in providers')
+        li.heal-provider__item(v-for='item in providers.providers')
           label.heal-provider__item-check
             input.heal-provider__item-check-field(type='checkbox')
             .heal-provider__item-check-style(@click='selectProvider')
@@ -87,6 +87,7 @@
     name: 'providers-page',
     async asyncData () {
       let { data } = await axios.get('/api/providers')
+      data = JSON.parse(data)
       return { providers: data }
     },
     components: { Icon },

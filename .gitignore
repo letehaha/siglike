@@ -12,3 +12,9 @@ dist
 
 # Backpack build
 build
+
+#Config file for VS Code
+.editorconfig
+
+#configs
+server/firebase.config.js

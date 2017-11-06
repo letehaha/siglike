@@ -1,5 +1,5 @@
 <template lang="pug">
-  
+
   .heal-provide-profile
     section.heal-provide-profile__main
       .heal-provide-profile__tab-info
@@ -8,9 +8,9 @@
             nuxt-link.heal-provide-profile__back(to='/providers')
               <icon name='arrow_left'></icon>
 
-            .heal-provide-profile__photo 
+            .heal-provide-profile__photo
               img.heal-provide-profile__photo-img(:src="'./img/' + provider.user_avatar", :alt="provider.name + ' ' + provider.s_name")
-            
+
             .heal-provide-profile__bio
               .heal-provide-profile__bio-name
                 | {{ provider.reference + ' ' + provider.s_name }}
@@ -18,7 +18,7 @@
               .heal-provide-profile__bio-role
                 .heal-provide-profile__bio-role-icon
                   <icon name='radiologist'></icon>
-                
+
                 | {{ provider.profession }}
 
             ul.heal-provide-profile__files-info
@@ -42,7 +42,7 @@
 
             button.heal-provide-profile__item
               | Report History
-        
+
         .heal-provide-profile__body.scrollable(ref='tabsContentList')
           .heal-provide-profile__body-content
             ul.heal-provide-profile__info-list
@@ -65,13 +65,13 @@
                   li.heal-provide-profile__info-elem.heal-provide-profile__info-elem--note(v-if='item.note.status === true')
                     .heal-provide-profile__info-elem-note
                       | {{ item.note.message }}
-          
+
           .heal-provide-profile__body-content
             .heal-provide-profile__reports
               .heal-provide-profile__reports-elem.heal-provide-profile__reports-elem--folders
                 .heal-provide-profile__reports-title
                   | Folders
-                
+
                 ul.heal-provide-profile__reports-list
                   li.heal-provide-profile__reports-item(v-for='folder in provider.report_history.folders')
                     .heal-provide-profile__reports-item-icon
@@ -82,7 +82,7 @@
 
                     .heal-provide-profile__reports-item-date
                       | {{ folder.date }}
-              
+
               .heal-provide-profile__reports-elem.heal-provide-profile__reports-elem--files
                 .heal-provide-profile__reports-title
                   | Files
@@ -360,7 +360,7 @@
     opacity: 0
     visibility: hidden
     transition: .3s ease-out
-    
+
     .heal-provide-profile__share-copy-btn.active &
       opacity: 1
       visibility: visible
@@ -424,7 +424,7 @@
 
   .heal-provide-profile__body-content
     display: none
-    
+
     &.heal-provide-profile__body-content--visible
       display: block
 
