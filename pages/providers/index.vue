@@ -3,7 +3,7 @@
   .heal-provider
     section.heal-provider__main
       ul.heal-provider__list
-        li.heal-provider__item(v-for='item in providers.providers')
+        li.heal-provider__item(v-for='item in providers')
           label.heal-provider__item-check
             input.heal-provider__item-check-field(type='checkbox')
             .heal-provider__item-check-style(@click='selectProvider')
