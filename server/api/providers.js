@@ -12,7 +12,7 @@ function search (nameKey, myArray) {
 }
 
 /* GET providers listing. */
-router.get('/providers', function (req, res, next) {
+router.get('/providers', (req, res, next) => {
   request.get('https://siglike-b0523.firebaseio.com/.json', function (error, response, body) {
     if (!error && response.statusCode === 200) {
       res.json(body)
@@ -21,13 +21,12 @@ router.get('/providers', function (req, res, next) {
 })
 
 /* GET provider by ID. */
-router.get('/providers/:id', function (req, res, next) {
+router.get('/providers/:id', (req, res, next) => {
   const id = parseInt(req.params.id)
   request.get('https://siglike-b0523.firebaseio.com/.json', function (error, response, body) {
     if (!error && response.statusCode === 200) {
       if (id >= 0) {
-        body = JSON.parse(body)
-        res.json(search(parseInt(id), body.providers))
+        res.json(search(parseInt(id), JSON.parse(body).providers))
       } else {
         res.sendStatus(404)
       }
