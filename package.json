@@ -16,6 +16,7 @@
     "cross-env": "^5.0.1",
     "express": "^4.15.3",
     "firebase": "^4.6.1",
+    "memory-cache": "^0.2.0",
     "nuxt": "^1.0.0-rc3",
     "request": "^2.83.0",
     "source-map-support": "^0.4.15",
